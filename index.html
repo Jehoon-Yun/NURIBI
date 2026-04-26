@@ -1,0 +1,4303 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NURIBI · Brand Identity Guidebook v1.0</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,200..900,0..100;1,9..144,200..900,0..100&family=Manrope:wght@200..800&family=Gowun+Batang:wght@400;700&family=Noto+Serif+KR:wght@200..900&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* ─── Brand Colors ─── */
+  --aurum:        #C8954A;  /* Primary gold */
+  --aurum-deep:   #8B5E2C;  /* Deep gold for hover/pressed */
+  --espresso:     #2A1810;  /* Warm near-black */
+  --bronze:       #5C3A1E;  /* Editorial dark */
+  --morning-mist: #FFE8D6;  /* Pale peach glow */
+  --soft-petal:   #D89B8C;  /* Dusty rose */
+  --paper-cream:  #FAF4EB;  /* Background */
+  --silk:         #F2E8D9;  /* Card surface */
+  --quiet-stone:  #8B7E6E;  /* Secondary text */
+  --deep-pine:    #1F4D5C;  /* Trust accent (sparingly) */
+  --whisper:      #FFFCF7;  /* Highest white */
+  
+  /* ─── Typography ─── */
+  --font-display:    'Fraunces', 'Times New Roman', serif;
+  --font-display-kr: 'Gowun Batang', 'Noto Serif KR', serif;
+  --font-body:       'Manrope', system-ui, sans-serif;
+  --font-body-kr:    'Noto Serif KR', system-ui, serif;
+  --font-mono:       'JetBrains Mono', 'SF Mono', monospace;
+  
+  /* ─── Spatial ─── */
+  --page-pad-x: clamp(24px, 5vw, 80px);
+  --section-gap: clamp(80px, 12vh, 160px);
+}
+
+/* ─── Reset ─── */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--paper-cream);
+  color: var(--espresso);
+  font-family: var(--font-body);
+  font-weight: 350;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ─── Tab navigation (sticky, scroll-spy) ─── */
+.page-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--paper-cream);
+  border-bottom: 1px solid rgba(42, 24, 16, 0.08);
+  padding: 14px var(--page-pad-x);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+}
+.page-nav-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  color: var(--aurum);
+  text-transform: uppercase;
+  margin-right: 16px;
+}
+.page-nav a {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  color: var(--bronze);
+  text-decoration: none;
+  padding: 7px 12px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.page-nav a:hover {
+  color: var(--espresso);
+  background: rgba(200, 149, 74, 0.08);
+}
+.page-nav a.active {
+  color: var(--espresso);
+  border-color: var(--aurum);
+  background: var(--whisper);
+}
+html { scroll-padding-top: 120px; }
+
+/* ─── Per-section footer ─── */
+.section-footer {
+  padding: 32px 0 12px;
+  border-top: 1px solid rgba(42, 24, 16, 0.08);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--quiet-stone);
+  text-transform: uppercase;
+  margin-top: 80px;
+  gap: 16px;
+}
+.section-footer .brand { color: var(--espresso); font-weight: 500; justify-self: start; }
+.section-footer .page-num { color: var(--bronze); font-weight: 400; justify-self: center; }
+.section-footer .stamp { color: var(--aurum); justify-self: end; }
+
+/* Subtle paper grain background */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0.4 0 0 0 0 0.3 0 0 0 0 0.15 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+  z-index: 1;
+}
+main { position: relative; z-index: 2; }
+
+/* ─── Page Container ─── */
+.page {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 var(--page-pad-x);
+}
+
+/* ─── Section Common ─── */
+.section {
+  padding: var(--section-gap) 0;
+  position: relative;
+}
+.section + .section {
+  border-top: 1px solid rgba(42, 24, 16, 0.08);
+}
+
+.section-header {
+  display: grid;
+  grid-template-columns: 100px 1fr auto;
+  gap: 32px;
+  align-items: baseline;
+  margin-bottom: 64px;
+}
+.section-num {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  color: var(--aurum);
+  text-transform: uppercase;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(32px, 4vw, 56px);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: var(--espresso);
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+}
+.section-title em {
+  font-style: italic;
+  color: var(--aurum-deep);
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+.section-en {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--quiet-stone);
+  text-transform: uppercase;
+  align-self: baseline;
+  padding-top: 12px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   COVER
+═══════════════════════════════════════════════════════════ */
+.cover {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding: 60px 0 80px;
+  position: relative;
+}
+
+.cover-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--quiet-stone);
+  text-transform: uppercase;
+  padding-bottom: 80px;
+}
+.cover-top-mark {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.cover-top-mark::before {
+  content: "";
+  width: 24px;
+  height: 1px;
+  background: var(--aurum);
+}
+
+.cover-hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: 60px;
+  position: relative;
+}
+.cover-eyebrow {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(20px, 2.5vw, 28px);
+  font-weight: 300;
+  color: var(--aurum-deep);
+  font-variation-settings: "opsz" 24, "SOFT" 100;
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+}
+.cover-title {
+  font-family: var(--font-display);
+  font-size: clamp(64px, 14vw, 200px);
+  font-weight: 250;
+  letter-spacing: 0.18em;
+  line-height: 0.95;
+  color: var(--espresso);
+  font-variation-settings: "opsz" 144, "SOFT" 0;
+  position: relative;
+  text-align: center;
+}
+.cover-rule {
+  display: block;
+  margin: clamp(32px, 5vw, 60px) auto;
+  width: 64px;
+  height: 1px;
+  background: var(--aurum);
+}
+.cover-title-kr {
+  font-family: var(--font-display-kr);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  color: var(--bronze);
+  text-align: center;
+}
+.cover-tagline {
+  margin-top: 24px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(18px, 2.2vw, 26px);
+  font-weight: 350;
+  color: var(--aurum-deep);
+  text-align: center;
+  font-variation-settings: "opsz" 48, "SOFT" 100;
+  letter-spacing: -0.005em;
+}
+.cover-lede {
+  margin: 64px auto 0;
+  max-width: 560px;
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--bronze);
+  font-weight: 300;
+  text-align: center;
+  font-family: var(--font-body-kr);
+}
+
+.cover-meta {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  padding-top: 80px;
+  border-top: 1px solid rgba(42, 24, 16, 0.12);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--quiet-stone);
+}
+.cover-meta dt {
+  color: var(--aurum);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+.cover-meta dd {
+  color: var(--espresso);
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-transform: none;
+  font-family: var(--font-body);
+  font-weight: 400;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   STORY
+═══════════════════════════════════════════════════════════ */
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.story-display {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 4.5vw, 64px);
+  font-weight: 250;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--espresso);
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+}
+.story-display em {
+  font-style: italic;
+  color: var(--aurum-deep);
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+.story-display .lk {
+  display: inline-block;
+  position: relative;
+  white-space: nowrap;
+}
+.story-display .lk::after {
+  content: "";
+  position: absolute;
+  inset: auto -8px -2px;
+  height: 6px;
+  background: var(--morning-mist);
+  z-index: -1;
+}
+.story-body {
+  font-family: var(--font-body-kr);
+  font-size: 16px;
+  line-height: 1.85;
+  color: var(--bronze);
+  font-weight: 300;
+}
+.story-body p + p { margin-top: 1.4em; }
+
+.story-etymology {
+  margin-top: 40px;
+  padding: 32px;
+  background: var(--silk);
+  border-left: 3px solid var(--aurum);
+  position: relative;
+}
+.story-etymology .label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: var(--aurum);
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+.etymology-row {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(200, 149, 74, 0.15);
+  align-items: baseline;
+}
+.etymology-row:last-child { border-bottom: none; }
+.etymology-row .ko {
+  font-family: var(--font-display-kr);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--espresso);
+}
+.etymology-row .meaning {
+  font-size: 14px;
+  color: var(--bronze);
+  line-height: 1.5;
+}
+.etymology-row .meaning strong {
+  color: var(--espresso);
+  font-weight: 500;
+}
+
+.story-pullquote {
+  margin: 80px auto;
+  max-width: 880px;
+  text-align: center;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 250;
+  line-height: 1.25;
+  color: var(--bronze);
+  letter-spacing: -0.015em;
+  position: relative;
+  font-variation-settings: "opsz" 96, "SOFT" 100;
+}
+.story-pullquote::before, .story-pullquote::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--aurum);
+  margin: 32px auto;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PROMISE / VALUES
+═══════════════════════════════════════════════════════════ */
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 48px;
+  margin-top: 16px;
+}
+.value-card {
+  background: var(--whisper);
+  padding: 48px 40px;
+  position: relative;
+  border: 1px solid rgba(42, 24, 16, 0.08);
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s;
+}
+.value-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 48px -16px rgba(42, 24, 16, 0.12);
+}
+.value-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: var(--aurum);
+  margin-bottom: 24px;
+}
+.value-title {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 350;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--espresso);
+  margin-bottom: 20px;
+  font-variation-settings: "opsz" 96, "SOFT" 30;
+}
+.value-title em {
+  font-style: italic;
+  color: var(--aurum-deep);
+  font-variation-settings: "opsz" 96, "SOFT" 100;
+}
+.value-body {
+  font-family: var(--font-body-kr);
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--bronze);
+  font-weight: 300;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   AUDIENCE
+═══════════════════════════════════════════════════════════ */
+.audience-intro {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 250;
+  line-height: 1.3;
+  color: var(--bronze);
+  max-width: 800px;
+  margin-bottom: 80px;
+  font-style: italic;
+  font-variation-settings: "opsz" 96, "SOFT" 100;
+}
+.persona-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.persona-card {
+  background: var(--whisper);
+  padding: 36px 28px;
+  position: relative;
+  border-top: 3px solid var(--aurum);
+}
+.persona-flag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--aurum);
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+.persona-name {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--espresso);
+  margin-bottom: 8px;
+  font-variation-settings: "opsz" 48, "SOFT" 100;
+}
+.persona-age {
+  font-size: 13px;
+  color: var(--quiet-stone);
+  font-family: var(--font-mono);
+  margin-bottom: 24px;
+  letter-spacing: 0.1em;
+}
+.persona-quote {
+  font-family: var(--font-display-kr);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--bronze);
+  font-style: italic;
+  margin-bottom: 24px;
+  padding-left: 16px;
+  border-left: 2px solid var(--morning-mist);
+}
+.persona-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 16px;
+}
+.persona-tag {
+  font-size: 10px;
+  font-family: var(--font-mono);
+  letter-spacing: 0.1em;
+  color: var(--bronze);
+  background: var(--silk);
+  padding: 4px 10px;
+  text-transform: uppercase;
+}
+.persona-treatments {
+  font-size: 12px;
+  color: var(--quiet-stone);
+  margin-top: 16px;
+  line-height: 1.5;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   LOGO SYSTEM
+═══════════════════════════════════════════════════════════ */
+.logo-hero {
+  background: var(--whisper);
+  padding: 100px 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 32px;
+  position: relative;
+  border: 1px solid rgba(42, 24, 16, 0.08);
+  min-height: 480px;
+}
+.logo-hero svg { max-width: 600px; width: 100%; height: auto; }
+
+.logo-hero-actions {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.logo-hero-actions::before {
+  content: '↓ DOWNLOAD';
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: var(--aurum);
+  margin-right: 8px;
+  text-transform: uppercase;
+}
+.logo-hero-actions .dl-btn {
+  font-size: 11px;
+  padding: 8px 14px;
+  background: var(--whisper);
+  border-color: rgba(42, 24, 16, 0.15);
+  font-weight: 600;
+}
+.logo-hero-actions .dl-btn:hover {
+  background: var(--espresso);
+  border-color: var(--espresso);
+  color: var(--whisper);
+}
+.logo-hero-actions .dl-btn:hover::before { color: var(--aurum); }
+
+.logo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: 32px;
+}
+.logo-tile {
+  background: var(--whisper);
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 280px;
+  position: relative;
+  border: 1px solid rgba(42, 24, 16, 0.08);
+}
+.logo-tile.dark { background: var(--espresso); }
+.logo-tile-canvas {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 0;
+  flex: 1;
+}
+.logo-tile-canvas svg { max-width: 320px; width: 100%; height: auto; }
+.logo-tile-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(42, 24, 16, 0.1);
+}
+.logo-tile.dark .logo-tile-info { border-top-color: rgba(255, 252, 247, 0.15); }
+.logo-tile-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--quiet-stone);
+  text-transform: uppercase;
+}
+.logo-tile.dark .logo-tile-label { color: var(--morning-mist); }
+
+/* Download buttons */
+.dl-group {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.dl-group::before {
+  content: 'DOWNLOAD';
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: var(--aurum);
+  margin-right: 6px;
+  text-transform: uppercase;
+}
+.logo-tile.dark .dl-group::before { color: var(--aurum); }
+.dl-btn {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  font-weight: 500;
+  text-transform: uppercase;
+  background: transparent;
+  color: var(--bronze);
+  border: 1px solid rgba(42, 24, 16, 0.2);
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.dl-btn::before {
+  content: '↓';
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--aurum);
+  transition: color 0.2s ease;
+}
+.dl-btn:hover {
+  background: var(--aurum);
+  border-color: var(--aurum);
+  color: var(--whisper);
+}
+.dl-btn:hover::before { color: var(--whisper); }
+.dl-btn.no-icon::before { display: none; }
+.logo-tile.dark .dl-btn {
+  color: var(--morning-mist);
+  border-color: rgba(255, 252, 247, 0.25);
+}
+.logo-tile.dark .dl-btn::before { color: var(--aurum); }
+.logo-tile.dark .dl-btn:hover {
+  background: var(--aurum);
+  border-color: var(--aurum);
+  color: var(--whisper);
+}
+
+/* Prominent inline download group — bigger, more visible than .dl-btn */
+.dl-group-inline {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+}
+.dl-group-inline .dl-btn {
+  font-size: 11px;
+  padding: 8px 14px;
+  letter-spacing: 0.18em;
+  background: var(--whisper);
+  border-color: rgba(42, 24, 16, 0.15);
+  font-weight: 600;
+}
+.dl-group-inline .dl-btn:hover {
+  background: var(--espresso);
+  border-color: var(--espresso);
+  color: var(--whisper);
+}
+.dl-group-inline .dl-btn:hover::before { color: var(--aurum); }
+.logo-tile.dark .dl-group-inline .dl-btn {
+  background: rgba(255, 252, 247, 0.06);
+  border-color: rgba(255, 252, 247, 0.25);
+}
+.logo-tile.dark .dl-group-inline .dl-btn:hover {
+  background: var(--aurum);
+  border-color: var(--aurum);
+}
+
+/* Mini download for compact contexts (favicons, pattern apps) */
+.dl-mini {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  background: transparent;
+  color: var(--bronze);
+  border: 1px solid rgba(42, 24, 16, 0.18);
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.dl-mini::before {
+  content: '↓';
+  color: var(--aurum);
+  font-weight: 700;
+}
+.dl-mini:hover {
+  background: var(--espresso);
+  border-color: var(--espresso);
+  color: var(--whisper);
+}
+.dl-mini:hover::before { color: var(--aurum); }
+
+/* Construction guide */
+.construction {
+  background: var(--silk);
+  padding: 60px;
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.construction-svg svg { width: 100%; height: auto; max-width: 400px; }
+.construction-text h4 {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 400;
+  font-style: italic;
+  margin-bottom: 16px;
+  color: var(--espresso);
+  font-variation-settings: "opsz" 48, "SOFT" 100;
+}
+.construction-text p {
+  font-family: var(--font-body-kr);
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--bronze);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   COLOR SYSTEM
+═══════════════════════════════════════════════════════════ */
+.color-group {
+  margin-bottom: 56px;
+}
+.color-group-title {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-style: italic;
+  letter-spacing: 0.05em;
+  color: var(--aurum-deep);
+  margin-bottom: 20px;
+  text-transform: lowercase;
+  font-variation-settings: "opsz" 24, "SOFT" 100;
+}
+.color-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 20px;
+}
+.color-card {
+  background: var(--whisper);
+  border: 1px solid rgba(42, 24, 16, 0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.color-card.feature {
+  grid-row: span 1;
+}
+.color-swatch {
+  height: 200px;
+  position: relative;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.color-swatch:hover { opacity: 0.9; }
+.color-swatch::after {
+  content: "↓ Click to copy HEX";
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.color-swatch.dark::after { color: rgba(0, 0, 0, 0.5); }
+.color-swatch:hover::after { opacity: 1; }
+.color-swatch.copied::after {
+  content: "✓ Copied!";
+  opacity: 1;
+  color: var(--whisper);
+}
+.color-info {
+  padding: 20px;
+}
+.color-name {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
+  color: var(--espresso);
+  font-variation-settings: "opsz" 36, "SOFT" 30;
+}
+.color-name em {
+  font-style: italic;
+  color: var(--aurum-deep);
+}
+.color-role {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--quiet-stone);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.color-vals {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 4px 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--bronze);
+}
+.color-vals dt { color: var(--aurum); font-weight: 500; }
+.color-vals dd { color: var(--espresso); }
+.color-usage {
+  margin-top: 16px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--quiet-stone);
+  font-family: var(--font-body-kr);
+}
+
+.palette-download {
+  margin-top: 40px;
+  padding: 32px;
+  background: var(--whisper);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid rgba(42, 24, 16, 0.08);
+}
+
+/* ─── Favicon System ─── */
+.favicon-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 16px;
+  padding: 40px 32px;
+  background: var(--silk);
+  align-items: end;
+}
+.favicon-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.favicon-chip {
+  background: var(--whisper);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(42, 24, 16, 0.06);
+}
+.favicon-chip.dark { background: var(--espresso); }
+.favicon-chip.aurum { background: var(--espresso); }
+.favicon-chip.aurum svg { transform: scale(1); }
+.favicon-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: var(--espresso);
+  text-transform: uppercase;
+}
+.favicon-note {
+  font-family: var(--font-body);
+  font-size: 10px;
+  color: var(--quiet-stone);
+  font-style: italic;
+}
+
+/* ─── Gradient Spec Block ─── */
+.grad-spec {
+  border: 1px solid rgba(42, 24, 16, 0.08);
+  background: var(--whisper);
+  overflow: hidden;
+}
+.grad-bar {
+  height: 100px;
+  background: linear-gradient(110deg, #2A1810 0%, #8B5E2C 50%, #FFE8D6 100%);
+}
+.grad-stops {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-bottom: 1px solid rgba(42, 24, 16, 0.08);
+}
+.grad-stop {
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-right: 1px solid rgba(42, 24, 16, 0.06);
+}
+.grad-stop:last-child { border-right: none; }
+.grad-stop .pct {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--aurum);
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.grad-stop .hex {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--espresso);
+  font-weight: 500;
+}
+.grad-stop .lbl {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-style: italic;
+  color: var(--bronze);
+  font-variation-settings: "opsz" 24, "SOFT" 100;
+}
+.grad-code {
+  background: var(--espresso);
+  color: var(--morning-mist);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.7;
+  padding: 24px 28px;
+  margin: 0;
+  white-space: pre;
+  overflow-x: auto;
+}
+.palette-download-text h4 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-style: italic;
+  margin-bottom: 4px;
+  font-variation-settings: "opsz" 48, "SOFT" 100;
+}
+.palette-download-text p {
+  font-size: 13px;
+  color: var(--quiet-stone);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   TYPOGRAPHY
+═══════════════════════════════════════════════════════════ */
+.type-spec {
+  background: var(--whisper);
+  padding: 48px;
+  margin-bottom: 24px;
+  border: 1px solid rgba(42, 24, 16, 0.08);
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.type-meta dt {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--aurum);
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+.type-meta dd {
+  font-size: 13px;
+  color: var(--bronze);
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+.type-meta dd:last-child { margin-bottom: 0; }
+.type-sample {
+  overflow: hidden;
+}
+.type-sample.display-en {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 6vw, 84px);
+  font-weight: 300;
+  letter-spacing: -0.025em;
+  line-height: 1;
+  color: var(--espresso);
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+}
+.type-sample.display-en em {
+  font-style: italic;
+  color: var(--aurum-deep);
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+.type-sample.body-en {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--bronze);
+}
+.type-sample.display-kr {
+  font-family: var(--font-display-kr);
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  color: var(--espresso);
+}
+.type-sample.body-kr {
+  font-family: var(--font-body-kr);
+  font-size: 16px;
+  line-height: 1.85;
+  color: var(--bronze);
+  font-weight: 300;
+}
+.type-sample.mono {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--espresso);
+  letter-spacing: 0.02em;
+}
+
+.type-scale {
+  margin-top: 40px;
+  padding: 32px;
+  background: var(--silk);
+}
+.type-scale-title {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-style: italic;
+  margin-bottom: 24px;
+  font-variation-settings: "opsz" 24, "SOFT" 100;
+}
+.type-scale-row {
+  display: grid;
+  grid-template-columns: 80px 100px 80px 1fr;
+  gap: 16px;
+  align-items: baseline;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(42, 24, 16, 0.08);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--bronze);
+  letter-spacing: 0.05em;
+}
+.type-scale-row:last-child { border-bottom: none; }
+.type-scale-row .label {
+  color: var(--aurum);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+.type-scale-row .demo {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+  color: var(--espresso);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ─── Weight Guide ─── */
+.weight-guide {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.weight-card {
+  background: var(--whisper);
+  padding: 32px 28px;
+  border: 1px solid rgba(42, 24, 16, 0.08);
+}
+.weight-spec {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--aurum);
+  font-weight: 500;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.weight-display {
+  font-family: var(--font-display);
+  font-size: 48px;
+  letter-spacing: 0.18em;
+  color: var(--espresso);
+  margin-bottom: 16px;
+  line-height: 1;
+}
+.weight-card p {
+  font-family: var(--font-body-kr);
+  font-size: 13px;
+  color: var(--bronze);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   VOICE
+═══════════════════════════════════════════════════════════ */
+.voice-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 56px;
+}
+.voice-principle {
+  background: var(--whisper);
+  padding: 40px 32px;
+  border-top: 3px solid var(--aurum);
+}
+.voice-principle-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--aurum);
+  margin-bottom: 16px;
+}
+.voice-principle-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: -0.01em;
+  color: var(--espresso);
+  margin-bottom: 16px;
+  font-variation-settings: "opsz" 48, "SOFT" 100;
+}
+.voice-principle-body {
+  font-family: var(--font-body-kr);
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--bronze);
+}
+
+.voice-examples {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.voice-ex {
+  background: var(--whisper);
+  padding: 32px;
+  position: relative;
+}
+.voice-ex.yes { border-left: 3px solid var(--aurum); }
+.voice-ex.no { border-left: 3px solid var(--soft-petal); opacity: 0.85; }
+.voice-ex-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.voice-ex.yes .voice-ex-tag { color: var(--aurum); }
+.voice-ex.no .voice-ex-tag { color: var(--soft-petal); }
+.voice-ex-context {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--quiet-stone);
+  margin-bottom: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.voice-ex-text {
+  font-family: var(--font-body-kr);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--espresso);
+  margin-bottom: 12px;
+}
+.voice-ex-text-en {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--bronze);
+  font-style: italic;
+}
+.voice-ex.no .voice-ex-text { color: var(--quiet-stone); text-decoration: line-through; text-decoration-color: var(--soft-petal); }
+.voice-ex.no .voice-ex-text-en { color: var(--quiet-stone); }
+
+/* ═══════════════════════════════════════════════════════════
+   MULTILINGUAL
+═══════════════════════════════════════════════════════════ */
+.multi-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--whisper);
+  border: 1px solid rgba(42, 24, 16, 0.08);
+}
+.multi-table th, .multi-table td {
+  padding: 32px 28px;
+  text-align: left;
+  vertical-align: middle;
+  border-bottom: 1px solid rgba(42, 24, 16, 0.08);
+}
+.multi-table th {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--aurum);
+  text-transform: uppercase;
+  font-weight: 500;
+  background: var(--silk);
+}
+.multi-table tr:last-child td { border-bottom: none; }
+.multi-lang {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.multi-lang-name {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--aurum-deep);
+  letter-spacing: 0.1em;
+}
+.multi-lang-script {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--quiet-stone);
+  letter-spacing: 0.15em;
+}
+.multi-display {
+  font-size: 36px;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+  color: var(--espresso);
+}
+.multi-display.kr { font-family: var(--font-display-kr); font-weight: 700; }
+.multi-display.en { font-family: var(--font-display); font-variation-settings: "opsz" 144, "SOFT" 0; font-weight: 300; letter-spacing: 0.18em; }
+.multi-display.jp { font-family: var(--font-display-kr); font-weight: 400; }
+.multi-display.cn { font-family: var(--font-display-kr); font-weight: 400; }
+.multi-note {
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--quiet-stone);
+  font-family: var(--font-body-kr);
+  max-width: 360px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   DON'T
+═══════════════════════════════════════════════════════════ */
+.donts-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.dont-card {
+  background: var(--whisper);
+  border: 1px solid rgba(42, 24, 16, 0.08);
+  padding: 32px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.dont-canvas {
+  width: 100%;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+}
+.dont-canvas::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(216, 155, 140, 0.08);
+}
+.dont-canvas svg { max-width: 80%; max-height: 100%; opacity: 0.85; }
+.dont-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: var(--soft-petal);
+  text-transform: uppercase;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 12px;
+}
+.dont-num {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--quiet-stone);
+  letter-spacing: 0.2em;
+  margin-bottom: 8px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   TAGLINES
+═══════════════════════════════════════════════════════════ */
+.tagline-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+.tagline-card {
+  background: var(--whisper);
+  padding: 56px 48px;
+  border-left: 3px solid var(--aurum);
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.tagline-context {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--aurum);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.tagline-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.tagline-text-kr {
+  font-family: var(--font-display-kr);
+  font-size: clamp(20px, 2.5vw, 32px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.3;
+  color: var(--espresso);
+}
+.tagline-text-en {
+  font-family: var(--font-display);
+  font-size: clamp(18px, 2vw, 26px);
+  font-style: italic;
+  font-weight: 350;
+  line-height: 1.3;
+  color: var(--bronze);
+  letter-spacing: -0.01em;
+  font-variation-settings: "opsz" 48, "SOFT" 100;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ASSET LIBRARY
+═══════════════════════════════════════════════════════════ */
+.asset-hero {
+  background: linear-gradient(135deg, var(--espresso) 0%, var(--bronze) 100%);
+  color: var(--whisper);
+  padding: 80px 60px;
+  margin-bottom: 32px;
+  position: relative;
+  overflow: hidden;
+}
+.asset-hero::before {
+  content: "";
+  position: absolute;
+  right: -100px;
+  top: -100px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, var(--aurum) 0%, transparent 60%);
+  opacity: 0.3;
+}
+.asset-hero-content { position: relative; z-index: 1; }
+.asset-hero h2 {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 4.5vw, 56px);
+  font-weight: 250;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 16px;
+  color: var(--whisper);
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+}
+.asset-hero h2 em {
+  font-style: italic;
+  color: var(--morning-mist);
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+.asset-hero p {
+  max-width: 560px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--morning-mist);
+  font-family: var(--font-body-kr);
+}
+
+.asset-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.asset-row {
+  background: var(--whisper);
+  padding: 24px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid rgba(42, 24, 16, 0.08);
+  transition: all 0.2s;
+}
+.asset-row:hover {
+  border-color: var(--aurum);
+  background: var(--silk);
+}
+.asset-row-label {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.asset-row-name {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--espresso);
+  font-variation-settings: "opsz" 24, "SOFT" 30;
+}
+.asset-row-meta {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: var(--quiet-stone);
+  text-transform: uppercase;
+}
+.asset-row-actions { display: flex; gap: 6px; }
+
+/* ═══════════════════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════════════════ */
+.footer {
+  margin-top: var(--section-gap);
+  padding: 80px 0 48px;
+  border-top: 1px solid rgba(42, 24, 16, 0.12);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: end;
+}
+.footer-mark {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+.footer-mark svg { width: 32px; height: 32px; }
+.footer-mark span {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--espresso);
+  font-variation-settings: "opsz" 36, "SOFT" 30;
+  letter-spacing: 0.02em;
+}
+.footer-tagline {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-style: italic;
+  color: var(--quiet-stone);
+  font-variation-settings: "opsz" 24, "SOFT" 100;
+}
+.footer-meta {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--quiet-stone);
+  text-transform: uppercase;
+  text-align: right;
+  line-height: 1.8;
+}
+
+/* ─── Toast ─── */
+.toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%) translateY(0);
+  background: var(--espresso);
+  color: var(--whisper);
+  padding: 14px 24px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 12px 32px -8px rgba(42, 24, 16, 0.4);
+}
+.toast.show { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(-8px); }
+
+/* ─── Print ─── */
+@media print {
+  body { background: white; }
+  body::before { display: none; }
+  .section { break-inside: avoid; padding: 40px 0; }
+  .dl-btn, .palette-download, .asset-hero, .asset-grid { display: none; }
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 1024px) {
+  .story-grid { grid-template-columns: 1fr; gap: 48px; }
+  .values-grid, .voice-grid { grid-template-columns: 1fr; }
+  .persona-grid, .donts-grid { grid-template-columns: repeat(2, 1fr); }
+  .color-grid { grid-template-columns: 1fr 1fr; }
+  .logo-grid, .voice-examples { grid-template-columns: 1fr; }
+  .asset-grid { grid-template-columns: 1fr; }
+  .construction { grid-template-columns: 1fr; }
+  .tagline-card { grid-template-columns: 1fr; gap: 16px; }
+  .type-spec { grid-template-columns: 1fr; gap: 24px; }
+  .cover-meta { grid-template-columns: 1fr 1fr; }
+  .section-header { grid-template-columns: 1fr; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PATTERN SYSTEM (Section 10)
+═══════════════════════════════════════════════════════════ */
+.pattern-intro {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 64px;
+  align-items: stretch;
+  margin-bottom: 32px;
+}
+.pattern-intro-text h3 {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.4vw, 42px);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  color: var(--espresso);
+  line-height: 1.15;
+  margin: 0 0 28px;
+  font-variation-settings: 'opsz' 144, 'SOFT' 0;
+}
+.pattern-intro-text h3 em {
+  font-style: italic;
+  font-weight: 350;
+  color: var(--aurum-deep);
+  font-variation-settings: 'opsz' 96, 'SOFT' 100;
+}
+.pattern-intro-text p {
+  font-family: var(--font-body-kr);
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--bronze);
+  margin: 0 0 14px;
+}
+.pattern-intro-text p strong {
+  color: var(--espresso);
+  font-weight: 700;
+}
+.pattern-hero {
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background: var(--espresso);
+  position: relative;
+}
+.pattern-hero-actions {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  background: rgba(42, 24, 16, 0.85);
+  padding: 8px 10px;
+}
+.pattern-hero-actions .dl-btn {
+  font-size: 10px;
+  background: rgba(255, 252, 247, 0.12);
+  border-color: rgba(255, 252, 247, 0.3);
+  color: var(--whisper);
+  padding: 6px 10px;
+}
+.pattern-hero-actions .dl-btn:hover {
+  background: var(--aurum);
+  border-color: var(--aurum);
+}
+.dl-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: var(--aurum);
+  text-transform: uppercase;
+  margin-right: 4px;
+}
+.pattern-apps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.pattern-app {
+  background: var(--whisper);
+  border: 1px solid rgba(42, 24, 16, 0.08);
+  overflow: hidden;
+}
+.pattern-app-canvas {
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  background: var(--espresso);
+}
+.pattern-app-info {
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(42, 24, 16, 0.08);
+}
+.pattern-app-name {
+  font-family: var(--font-body-kr);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--espresso);
+}
+.pattern-app-spec {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  color: var(--quiet-stone);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.pattern-app-actions {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   APPLICATIONS (Section 11)
+═══════════════════════════════════════════════════════════ */
+.apps-row {
+  display: grid;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+.apps-hero-row {
+  grid-template-columns: 1fr 1.1fr;
+}
+.apps-row-2 {
+  grid-template-columns: 1fr 1fr;
+}
+.apps-icons-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.app-tile {
+  background: var(--whisper);
+  border: 1px solid rgba(42, 24, 16, 0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.app-tile-canvas {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.app-tile-info {
+  padding: 16px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(42, 24, 16, 0.08);
+}
+.app-tile-name {
+  font-family: var(--font-body-kr);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--espresso);
+}
+.app-tile-spec {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  color: var(--quiet-stone);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.app-tile-actions {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.app-tile-splash .app-tile-canvas {
+  min-height: 700px;
+}
+
+/* iPhone mockup */
+.iphone-mockup {
+  width: 300px;
+  height: 620px;
+  border-radius: 42px;
+  background: var(--espresso);
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 32px 64px -12px rgba(42,24,16,0.5),
+    0 0 0 4px rgba(42,24,16,0.06),
+    0 0 0 1px rgba(255,255,255,0.6) inset;
+}
+.iphone-notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110px;
+  height: 26px;
+  background: #111;
+  border-radius: 0 0 18px 18px;
+  z-index: 3;
+}
+.iphone-status {
+  position: absolute;
+  top: 12px;
+  left: 26px;
+  right: 26px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(250, 244, 235, 0.85);
+  z-index: 4;
+  letter-spacing: 0.05em;
+}
+.iphone-screen {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.iphone-home {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110px;
+  height: 4px;
+  background: rgba(250, 244, 235, 0.4);
+  border-radius: 2px;
+  z-index: 5;
+}
+
+/* Business card */
+.bcard {
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 90 / 52;
+  background: var(--whisper);
+  padding: 22px 24px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow:
+    0 14px 28px -8px rgba(42,24,16,0.18),
+    0 1px 0 rgba(42,24,16,0.04);
+  border-top: 2px solid var(--aurum);
+}
+.bcard.bcard-back {
+  background: var(--espresso);
+  border-top: none;
+  overflow: hidden;
+  padding: 22px 24px;
+}
+
+/* Letterhead */
+.letterhead {
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 210 / 297;
+  background: var(--whisper);
+  padding: 32px 36px;
+  display: flex;
+  flex-direction: column;
+  box-shadow:
+    0 14px 32px -10px rgba(42,24,16,0.18),
+    0 0 0 1px rgba(42,24,16,0.04);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   APPENDIX (Section 13)
+═══════════════════════════════════════════════════════════ */
+.appendix-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+.appendix-card {
+  background: var(--whisper);
+  border: 1px solid rgba(42, 24, 16, 0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.appendix-head {
+  padding: 22px 26px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.appendix-head h3 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 350;
+  font-style: italic;
+  color: var(--espresso);
+  margin: 0;
+  letter-spacing: -0.005em;
+  font-variation-settings: 'opsz' 48, 'SOFT' 100;
+}
+.appendix-meta {
+  padding: 0 26px 14px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  color: var(--aurum);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.code-block {
+  background: var(--espresso);
+  color: var(--morning-mist);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.65;
+  padding: 22px 26px;
+  margin: 0;
+  white-space: pre;
+  overflow-x: auto;
+  flex: 1;
+  max-height: 380px;
+  overflow-y: auto;
+}
+.code-block::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.code-block::-webkit-scrollbar-track {
+  background: rgba(255, 232, 214, 0.05);
+}
+.code-block::-webkit-scrollbar-thumb {
+  background: rgba(255, 232, 214, 0.2);
+  border-radius: 3px;
+}
+.appendix-meta-box {
+  padding: 32px;
+  background: var(--silk);
+  border: 1px solid rgba(42, 24, 16, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+}
+
+/* ─── Animations ─── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.section { animation: fade-up 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) backwards; }
+.section:nth-child(2) { animation-delay: 0.1s; }
+.section:nth-child(3) { animation-delay: 0.15s; }
+
+/* Ripple loading animation (replaces SMIL — more performant, GPU-accelerated, respects reduced-motion) */
+@keyframes ripple-pulse {
+  0%   { transform: scale(0.18); opacity: 1; }
+  100% { transform: scale(1);    opacity: 0; }
+}
+.ripple {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: ripple-pulse 2.4s ease-out infinite;
+  will-change: transform, opacity;
+}
+.ripple-2 { animation-delay: 0.8s; }
+.ripple-3 { animation-delay: 1.6s; }
+
+/* Pause animation when user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .section, .ripple { animation: none !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ SVG Definitions ═══ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <!-- Aurum gold thin underline used in stacked variants -->
+  <linearGradient id="aurumLine" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#C8954A" stop-opacity="0"/>
+    <stop offset="50%" stop-color="#C8954A" stop-opacity="1"/>
+    <stop offset="100%" stop-color="#C8954A" stop-opacity="0"/>
+  </linearGradient>
+</defs>
+</svg>
+
+<main>
+<nav class="page-nav">
+  <span class="page-nav-label">Pages</span>
+  <a href="#cover">Cover</a>
+  <a href="#story">01 Story</a>
+  <a href="#values">02 Promise</a>
+  <a href="#audience">03 Audience</a>
+  <a href="#logo">04 Logo</a>
+  <a href="#color">05 Color</a>
+  <a href="#typography">06 Type</a>
+  <a href="#voice">07 Voice</a>
+  <a href="#multilingual">08 Lang</a>
+  <a href="#donts">09 Usage</a>
+  <a href="#pattern">10 Pattern</a>
+  <a href="#apps">11 Apps</a>
+  <a href="#taglines">12 Tagline</a>
+  <a href="#appendix">13 Code</a>
+  <a href="#assets">14 Assets</a>
+</nav>
+<div class="page">
+
+<!-- ════════════════════════════════════════════════════════════════
+     COVER
+═══════════════════════════════════════════════════════════════════ -->
+<section class="section cover" id="cover">
+  <div class="cover-top">
+    <div class="cover-top-mark">Brand Identity Guidebook · v1.0</div>
+    <div>NRB · 2026 · Seoul</div>
+  </div>
+  
+  <div class="cover-hero">
+    <div class="cover-hero-text">
+      <div class="cover-eyebrow" style="text-align:center;">A guide to the light we carry —</div>
+      <h1 class="cover-title">N&thinsp;U&thinsp;R&thinsp;I&thinsp;B&thinsp;I</h1>
+      <span class="cover-rule"></span>
+      <div class="cover-title-kr">누 리 비</div>
+      <p class="cover-tagline">The light that meets you in Korea.</p>
+      <p class="cover-lede">한국 의료의 정밀함과 K-뷰티의 부드러움이 교차하는 지점에서, 처음 한국을 찾는 외국인 환자에게 닿는 따뜻한 빛. 이 가이드북은 그 빛이 어떻게 보이고, 어떻게 들리고, 어떻게 느껴져야 하는지를 정의합니다.</p>
+    </div>
+  </div>
+  
+  <dl class="cover-meta">
+    <div><dt>Concept</dt><dd>The light that meets you</dd></div>
+    <div><dt>Category</dt><dd>K-Medical reservation platform</dd></div>
+    <div><dt>Primary markets</dt><dd>JP · TW · US · CN<sup>P2</sup></dd></div>
+    <div><dt>Issued</dt><dd>2026 — Seoul</dd></div>
+  </dl>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════
+     01 — BRAND STORY
+═══════════════════════════════════════════════════════════════════ -->
+<section class="section" id="story">
+  <div class="section-header">
+    <div class="section-num">01</div>
+    <h2 class="section-title">세상의 빛이 <em>닿는 곳</em></h2>
+    <div class="section-en">Brand Story</div>
+  </div>
+  
+  <div class="story-grid">
+    <div>
+      <p class="story-display">우리는 다리를 놓지 않는다. <em class="lk">빛을 비춘다.</em></p>
+    </div>
+    <div class="story-body">
+      <p>한국 피부과는 세계 최고 수준의 정밀함을 갖췄지만, 그 문턱은 외국인 환자에게 여전히 높습니다. 언어, 가격, 신뢰, 어디서부터 시작해야 할지 모르는 막막함. <strong>누리비</strong>는 그 어둠 속에서 길을 보여주는 빛이 되고자 합니다.</p>
+      <p>화려하지 않게, 그러나 정확하게. 환자가 한국에 도착하기 전부터, 시술을 마치고 출국한 후까지, 매 순간 옅게 빛나는 안내자. 그것이 우리가 정의하는 브랜드의 본질입니다.</p>
+      <p>이름은 한국어 고어 두 단어의 결합입니다. <strong>누리</strong>는 '세상'을, <strong>비</strong>는 '빛'을 뜻합니다. 함께 읽으면 '세상의 빛'. 일본어로 발음하면 ヌリビ — 우연히도 일본어 <em>塗り美</em>(바르는 美)와 동음을 이루어, K-뷰티의 영역에 자연스럽게 자리잡습니다.</p>
+    </div>
+  </div>
+  
+  <div class="story-etymology">
+    <div class="label">Etymology · 어원</div>
+    <div class="etymology-row">
+      <div class="ko">누리</div>
+      <div class="meaning">중세 한국어 <strong>nwùlí</strong>에서 유래. 본래 '세상' 또는 '온누리'를 의미. 누리집(homepage), 누리꾼(netizen), 누리호(rocket) 등 현대 한국어의 외래어 대체 어근으로 활발히 사용됨.</div>
+    </div>
+    <div class="etymology-row">
+      <div class="ko">비</div>
+      <div class="meaning">'빛(光)'의 한국어 음. 햇비, 별비처럼 광채를 나타내는 시적 표현에 등장.</div>
+    </div>
+    <div class="etymology-row">
+      <div class="ko">塗り美</div>
+      <div class="meaning">일본어 의도된 동음. <strong>塗る</strong>(바르다) + <strong>美</strong>(미). 일본 1차 시장에서 K-뷰티 카테고리에 즉각 정렬되는 음운 자산.</div>
+    </div>
+  </div>
+  
+  <p class="story-pullquote">우리의 일은 환자가 한국에서 만나는 첫 순간부터 마지막 순간까지, 그 길에 알맞은 빛을 비추는 것이다.</p>
+
+  <div class="section-footer">
+    <span class="brand">Nuribi · Brand Identity Guidebook</span>
+    <span class="page-num">Page 01 of 14 · Brand Story</span>
+    <span class="stamp">2026 · Light meets you in Korea</span>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════
+     02 — BRAND PROMISE
+═══════════════════════════════════════════════════════════════════ -->
+<section class="section" id="values">
+  <div class="section-header">
+    <div class="section-num">02</div>
+    <h2 class="section-title">우리가 지키는 <em>네 가지</em></h2>
+    <div class="section-en">Brand Promise</div>
+  </div>
+  
+  <div class="values-grid">
+    <div class="value-card">
+      <div class="value-num">PRINCIPLE 01</div>
+      <h3 class="value-title"><em>환자가</em> 중심이다</h3>
+      <p class="value-body">모든 결정은 외국인 환자의 불안에서 출발합니다. 더 빠른 매칭이 아니라 더 안심되는 매칭. 더 많은 시술이 아니라 더 적합한 시술. 우리가 만드는 모든 화면, 모든 알림, 모든 문장은 "낯선 곳에서 첫 진료를 받는 사람의 마음"을 첫 번째 독자로 둡니다.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-num">PRINCIPLE 02</div>
+      <h3 class="value-title"><em>투명한</em> 여정</h3>
+      <p class="value-body">외국인이라는 이유로 더 많은 비용을 치르는 일은 끝납니다. 가격은 계약된 만큼만, 수수료는 명시된 범위 안에서, 추가 비용은 사전에 합의됩니다. 환자가 의료비 지출의 모든 단계를 미리 알고 있다는 것 — 이것이 우리가 정의하는 신뢰입니다.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-num">PRINCIPLE 03</div>
+      <h3 class="value-title">조용한 <em>인프라</em></h3>
+      <p class="value-body">좋은 인프라는 보이지 않습니다. 환자가 우리를 자주 떠올리는 순간이 많을수록, 우리가 무언가 잘못한 것입니다. 누리비는 환자와 병원 사이에서 마찰 없이 사라지는 운영 레이어가 되고자 합니다 — 환자에게는 따뜻한 안내자로, 병원에게는 부담 없는 백엔드로.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-num">PRINCIPLE 04</div>
+      <h3 class="value-title">한국의 <em>빛</em>을 담는다</h3>
+      <p class="value-body">우리는 한국 의료를 단순히 수출하지 않습니다. 정밀함, 환대, 디테일, 그리고 K-뷰티 특유의 부드러움 — 이 모든 것이 합쳐진 하나의 경험을 큐레이팅합니다. 환자가 비행기에서 내리는 순간부터 다시 비행기에 오를 때까지, 한국이 가진 가장 좋은 면이 그들에게 닿습니다.</p>
+    </div>
+  </div>
+
+  <div class="section-footer">
+    <span class="brand">Nuribi · Brand Identity Guidebook</span>
+    <span class="page-num">Page 02 of 14 · Promise</span>
+    <span class="stamp">2026 · Light meets you in Korea</span>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════
+     03 — AUDIENCE
+═══════════════════════════════════════════════════════════════════ -->
+<section class="section" id="audience">
+  <div class="section-header">
+    <div class="section-num">03</div>
+    <h2 class="section-title">우리가 빛을 <em>비추는</em> 사람들</h2>
+    <div class="section-en">Audience</div>
+  </div>
+  
+  <p class="audience-intro">"K-뷰티에 매료되었지만, 어디서부터 시작해야 할지 모르는 사람들. 우리는 그들의 첫 가이드가 됩니다."</p>
+  
+  <div class="persona-grid">
+    <div class="persona-card">
+      <div class="persona-flag">🇯🇵 JAPAN · 1차 타깃</div>
+      <div class="persona-name">Sayaka</div>
+      <div class="persona-age">27 · TOKYO · OL</div>
+      <p class="persona-quote">"한국 친구처럼 추천해주는 사람이 있으면 좋을 텐데."</p>
+      <div class="persona-treatments">관심 시술 — 보톡스 · 필러 · 광채 레이저 · 모공·여드름 케어</div>
+      <div class="persona-tags">
+        <span class="persona-tag">당일치기</span>
+        <span class="persona-tag">쁘띠</span>
+        <span class="persona-tag">SNS 친화</span>
+      </div>
+    </div>
+    
+    <div class="persona-card">
+      <div class="persona-flag">🇹🇼 TAIWAN · 1차 타깃</div>
+      <div class="persona-name">Mei-lin</div>
+      <div class="persona-age">32 · TAIPEI · 마케터</div>
+      <p class="persona-quote">"강남언니에 한국어 정보가 너무 많아서 결국 친구를 통해 예약했어요."</p>
+      <div class="persona-treatments">관심 시술 — 글래스 스킨 · 잡티 케어 · 리프팅 · 스킨부스터</div>
+      <div class="persona-tags">
+        <span class="persona-tag">K-콘텐츠</span>
+        <span class="persona-tag">중장기 케어</span>
+        <span class="persona-tag">정보 탐구</span>
+      </div>
+    </div>
+    
+    <div class="persona-card">
+      <div class="persona-flag">🇺🇸 USA · 1차 타깃</div>
+      <div class="persona-name">Emma</div>
+      <div class="persona-age">38 · LA · Creative Director</div>
+      <p class="persona-quote">"I trust Korean medicine, but I don't trust the brokers."</p>
+      <div class="persona-treatments">관심 시술 — 안티에이징 · 울쎄라 · 인모드 · 기능성 시술 패키지</div>
+      <div class="persona-tags">
+        <span class="persona-tag">프리미엄</span>
+        <span class="persona-tag">안티에이징</span>
+        <span class="persona-tag">투명성 우선</span>
+      </div>
+    </div>
+    
+    <div class="persona-card">
+      <div class="persona-flag">🇨🇳 CHINA · Phase 2</div>
+      <div class="persona-name">— TBD</div>
+      <div class="persona-age">2027~ · 단계적 진입</div>
+      <p class="persona-quote">"브로커 의존 시장의 구조적 리스크 검토 후 진입 결정."</p>
+      <div class="persona-treatments">진입 전제 — 위안화 결제 · 小紅書 마케팅 · 微信 통합</div>
+      <div class="persona-tags">
+        <span class="persona-tag">단계적</span>
+        <span class="persona-tag">신중 검토</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-footer">
+    <span class="brand">Nuribi · Brand Identity Guidebook</span>
+    <span class="page-num">Page 03 of 14 · Audience</span>
+    <span class="stamp">2026 · Light meets you in Korea</span>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════
+     04 — LOGO SYSTEM
+═══════════════════════════════════════════════════════════════════ -->
+<section class="section" id="logo">
+  <div class="section-header">
+    <div class="section-num">04</div>
+    <h2 class="section-title">로고 <em>시스템</em></h2>
+    <div class="section-en">Logo System</div>
+  </div>
+  
+  <!-- Hero: Primary Wordmark -->
+  <div class="logo-hero">
+    <svg id="logo-primary" viewBox="0 0 800 160" xmlns="http://www.w3.org/2000/svg">
+      <text x="400" y="105" 
+            font-family="Fraunces, Georgia, serif" 
+            font-size="74" 
+            font-weight="250"
+            fill="#2A1810" 
+            text-anchor="middle"
+            style="font-variation-settings: 'opsz' 144, 'SOFT' 0; letter-spacing: 0.28em;">NURIBI</text>
+    </svg>
+    <div class="logo-hero-actions">
+      <button class="dl-btn" onclick="downloadSVG('logo-primary','nuribi-logo-primary.svg')">SVG</button>
+      <button class="dl-btn" onclick="downloadPNG('logo-primary','nuribi-logo-primary',1024)">PNG · 1024</button>
+      <button class="dl-btn" onclick="downloadPNG('logo-primary','nuribi-logo-primary',2048)">PNG · 2048</button>
+    </div>
+  </div>
+  
+  <!-- Variants Grid -->
+  <div class="logo-grid">
+    <!-- Stacked with descriptor -->
+    <div class="logo-tile">
+      <div class="logo-tile-canvas">
+        <svg id="logo-stacked" viewBox="0 0 800 220" xmlns="http://www.w3.org/2000/svg">
+          <text x="400" y="100" 
+                font-family="Fraunces, Georgia, serif" 
+                font-size="74" 
+                font-weight="250"
+                fill="#2A1810" 
+                text-anchor="middle"
+                style="font-variation-settings: 'opsz' 144, 'SOFT' 0; letter-spacing: 0.28em;">NURIBI</text>
+          <line x1="365" y1="135" x2="435" y2="135" stroke="#C8954A" stroke-width="0.8"/>
+          <text x="400" y="172" 
+                font-family="JetBrains Mono, monospace" 
+                font-size="11"
+                font-weight="500"
+                fill="#8B7E6E" 
+                text-anchor="middle"
+                style="letter-spacing: 0.3em;">SEOUL · K-MEDICAL</text>
+        </svg>
+      </div>
+      <div class="logo-tile-info">
+        <div class="logo-tile-label">Stacked w/ Descriptor</div>
+        <div class="dl-group">
+          <button class="dl-btn" onclick="downloadSVG('logo-stacked','nuribi-stacked.svg')">SVG</button>
+          <button class="dl-btn" onclick="downloadPNG('logo-stacked','nuribi-stacked',1024)">PNG 1024</button>
+          <button class="dl-btn" onclick="downloadPNG('logo-stacked','nuribi-stacked',2048)">PNG 2048</button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Korean wordmark -->
+    <div class="logo-tile">
+      <div class="logo-tile-canvas">
+        <svg id="logo-kr" viewBox="0 0 540 160" xmlns="http://www.w3.org/2000/svg">
+          <text x="270" y="105" 
+                font-family="Gowun Batang, Noto Serif KR, serif" 
+                font-size="76" 
+                font-weight="700"
+                fill="#2A1810" 
+                text-anchor="middle"
+                style="letter-spacing: 0.22em;">누리비</text>
+        </svg>
+      </div>
+      <div class="logo-tile-info">
+        <div class="logo-tile-label">Korean · 누리비</div>
+        <div class="dl-group">
+          <button class="dl-btn" onclick="downloadSVG('logo-kr','nuribi-kr.svg')">SVG</button>
+          <button class="dl-btn" onclick="downloadPNG('logo-kr','nuribi-kr',1024)">PNG 1024</button>
+          <button class="dl-btn" onclick="downloadPNG('logo-kr','nuribi-kr',2048)">PNG 2048</button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Monogram N (light) -->
+    <div class="logo-tile">
+      <div class="logo-tile-canvas">
+        <svg id="logo-symbol" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <text x="100" y="148" 
+                font-family="Fraunces, Georgia, serif" 
+                font-size="160" 
+                font-weight="300"
+                fill="#2A1810" 
+                text-anchor="middle"
+                style="font-variation-settings: 'opsz' 144, 'SOFT' 0;">N</text>
+        </svg>
+      </div>
+      <div class="logo-tile-info">
+        <div class="logo-tile-label">Monogram · 모노그램</div>
+        <div class="dl-group">
+          <button class="dl-btn" onclick="downloadSVG('logo-symbol','nuribi-monogram.svg')">SVG</button>
+          <button class="dl-btn" onclick="downloadPNG('logo-symbol','nuribi-monogram',1024)">PNG 1024</button>
+          <button class="dl-btn" onclick="downloadPNG('logo-symbol','nuribi-monogram',2048)">PNG 2048</button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- App Icon (square with bg) -->
+    <div class="logo-tile">
+      <div class="logo-tile-canvas">
+        <svg id="logo-app-icon" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="max-width: 180px;">
+          <rect width="200" height="200" fill="#2A1810"/>
+          <text x="100" y="148" 
+                font-family="Fraunces, Georgia, serif" 
+                font-size="160" 
+                font-weight="300"
+                fill="#C8954A" 
+                text-anchor="middle"
+                style="font-variation-settings: 'opsz' 144, 'SOFT' 0;">N</text>
+        </svg>
+      </div>
+      <div class="logo-tile-info">
+        <div class="logo-tile-label">App Icon · 앱 아이콘</div>
+        <div class="dl-group">
+          <button class="dl-btn" onclick="downloadSVG('logo-app-icon','nuribi-app-icon.svg')">SVG</button>
+          <button class="dl-btn" onclick="downloadPNG('logo-app-icon','nuribi-app-icon',1024)">PNG 1024</button>
+          <button class="dl-btn" onclick="downloadPNG('logo-app-icon','nuribi-app-icon',2048)">PNG 2048</button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Wordmark on dark bg -->
+    <div class="logo-tile dark">
+      <div class="logo-tile-canvas">
+        <svg id="logo-dark" viewBox="0 0 800 160" xmlns="http://www.w3.org/2000/svg">
+          <text x="400" y="105" 
+                font-family="Fraunces, Georgia, serif" 
+                font-size="74" 
+                font-weight="250"
+                fill="#FAF4EB" 
+                text-anchor="middle"
+                style="font-variation-settings: 'opsz' 144, 'SOFT' 0; letter-spacing: 0.28em;">NURIBI</text>
+        </svg>
+      </div>
+      <div class="logo-tile-info">
+        <div class="logo-tile-label">Wordmark · 어두운 배경</div>
+        <div class="dl-group">
+          <button class="dl-btn" onclick="downloadSVG('logo-dark','nuribi-wordmark-dark.svg')">SVG</button>
+          <button class="dl-btn" onclick="downloadPNG('logo-dark','nuribi-wordmark-dark',1024)">PNG 1024</button>
+          <button class="dl-btn" onclick="downloadPNG('logo-dark','nuribi-wordmark-dark',2048)">PNG 2048</button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Monogram on dark -->
+    <div class="logo-tile dark">
+      <div class="logo-tile-canvas">
+        <svg id="logo-symbol-dark" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <text x="100" y="148" 
+                font-family="Fraunces, Georgia, serif" 
+                font-size="160" 
+                font-weight="300"
+                fill="#FAF4EB" 
+                text-anchor="middle"
+                style="font-variation-settings: 'opsz' 144, 'SOFT' 0;">N</text>
+        </svg>
+      </div>
+      <div class="logo-tile-info">
+        <div class="logo-tile-label">Monogram · 어두운 배경</div>
+        <div class="dl-group">
+          <button class="dl-btn" onclick="downloadSVG('logo-symbol-dark','nuribi-monogram-dark.svg')">SVG</button>
+          <button class="dl-btn" onclick="downloadPNG('logo-symbol-dark','nuribi-monogram-dark',1024)">PNG 1024</button>
+          <button class="dl-btn" onclick="downloadPNG('logo-symbol-dark','nuribi-monogram-dark',2048)">PNG 2048</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Construction -->
+  <div class="construction">
+    <div class="construction-svg">
+      <svg viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg">
+        <!-- Cap height + clear space markers -->
+        <g stroke="#C8954A" stroke-width="0.5" stroke-dasharray="2 4" opacity="0.4">
+          <line x1="40" y1="60" x2="760" y2="60"/>
+          <line x1="40" y1="140" x2="760" y2="140"/>
+          <line x1="40" y1="220" x2="760" y2="220"/>
+        </g>
+        <g stroke="#C8954A" stroke-width="0.5" opacity="0.6">
+          <line x1="40" y1="60" x2="40" y2="220"/>
+          <line x1="760" y1="60" x2="760" y2="220"/>
+          <line x1="180" y1="40" x2="180" y2="240"/>
+          <line x1="620" y1="40" x2="620" y2="240"/>
+        </g>
+        <!-- The wordmark -->
+        <text x="400" y="155" 
+              font-family="Fraunces, Georgia, serif" 
+              font-size="74" 
+              font-weight="250"
+              fill="#2A1810" 
+              text-anchor="middle"
+              style="font-variation-settings: 'opsz' 144, 'SOFT' 0; letter-spacing: 0.28em;">NURIBI</text>
+        <!-- Annotations -->
+        <g font-family="JetBrains Mono, monospace" font-size="9" fill="#8B7E6E" letter-spacing="1">
+          <text x="22" y="65" text-anchor="middle">x</text>
+          <text x="22" y="145" text-anchor="middle">x</text>
+          <text x="22" y="225" text-anchor="middle">x</text>
+          <text x="100" y="270" text-anchor="middle">CLEAR ← x →</text>
+          <text x="700" y="270" text-anchor="middle">x → CLEAR</text>
+        </g>
+        <text x="400" y="50" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#C8954A" letter-spacing="2">CAP HEIGHT = X · CLEAR SPACE = X · LETTER-SPACING = 0.28em</text>
+      </svg>
+    </div>
+    <div class="construction-text">
+      <h4>Construction & Clear Space</h4>
+      <p>대문자 높이 (cap height)를 X로 정의합니다. 워드마크의 사방에 최소 X만큼의 여백을 확보해야 하며, 어떤 요소도 이 영역을 침범하지 않습니다. 자간은 0.28em으로 고정 — 임의 조정 시 톤이 무너집니다.</p>
+      <p style="margin-top: 16px;">최소 사용 크기는 디지털에서 24px(N 모노그램 단독), 80px(워드마크 전체), 인쇄에서 8mm(모노그램), 25mm(워드마크)입니다. 이보다 작은 사이즈에는 사용하지 않습니다.</p>
+    </div>
+  </div>
+  
+  <!-- Favicon System -->
+  <h3 style="font-family: var(--font-display); font-size: 28px; font-weight: 350; font-style: italic; color: var(--espresso); margin: 80px 0 8px; letter-spacing: -0.02em; font-variation-settings: 'opsz' 96, 'SOFT' 100;"><em>파비콘 시스템</em> — Small-size simplification</h3>
+  <p style="font-size: 14px; color: var(--quiet-stone); margin-bottom: 32px; max-width: 720px; line-height: 1.7;">크기에 따라 다른 변형을 사용합니다. 16~32px에서는 디테일이 뭉개지므로 두꺼운 weight + 기하학적 단순화 버전을, 64px 이상에서는 마스터 모노그램을 사용합니다.</p>
+  
+  <div class="favicon-row">
+    <div class="favicon-slot">
+      <div class="favicon-chip" style="width: 32px; height: 32px;">
+        <svg id="fav-16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" width="16" height="16" shape-rendering="crispEdges">
+          <text x="8" y="13" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="700" fill="#2A1810" text-anchor="middle" style="font-variation-settings: 'opsz' 9, 'SOFT' 0;">N</text>
+        </svg>
+      </div>
+      <div class="favicon-label">16 × 16</div>
+      <div class="favicon-note">Browser tab</div>
+      <button class="dl-mini" onclick="downloadSVG('fav-16','nuribi-favicon-16.svg')">SVG</button>
+    </div>
+    <div class="favicon-slot">
+      <div class="favicon-chip" style="width: 48px; height: 48px;">
+        <svg id="fav-32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+          <text x="16" y="26" font-family="Fraunces, Georgia, serif" font-size="28" font-weight="500" fill="#2A1810" text-anchor="middle" style="font-variation-settings: 'opsz' 24, 'SOFT' 0;">N</text>
+        </svg>
+      </div>
+      <div class="favicon-label">32 × 32</div>
+      <div class="favicon-note">Bookmark</div>
+      <button class="dl-mini" onclick="downloadSVG('fav-32','nuribi-favicon-32.svg')">SVG</button>
+    </div>
+    <div class="favicon-slot">
+      <div class="favicon-chip" style="width: 64px; height: 64px;">
+        <svg id="fav-48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" width="48" height="48">
+          <text x="24" y="40" font-family="Fraunces, Georgia, serif" font-size="44" font-weight="350" fill="#2A1810" text-anchor="middle" style="font-variation-settings: 'opsz' 48, 'SOFT' 0;">N</text>
+        </svg>
+      </div>
+      <div class="favicon-label">48 × 48</div>
+      <div class="favicon-note">Touch icon</div>
+      <button class="dl-mini" onclick="downloadSVG('fav-48','nuribi-favicon-48.svg')">SVG</button>
+    </div>
+    <div class="favicon-slot">
+      <div class="favicon-chip" style="width: 80px; height: 80px;">
+        <svg id="fav-64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" width="64" height="64">
+          <text x="32" y="54" font-family="Fraunces, Georgia, serif" font-size="58" font-weight="300" fill="#2A1810" text-anchor="middle" style="font-variation-settings: 'opsz' 96, 'SOFT' 0;">N</text>
+        </svg>
+      </div>
+      <div class="favicon-label">64 × 64</div>
+      <div class="favicon-note">Standard</div>
+      <button class="dl-mini" onclick="downloadSVG('fav-64','nuribi-favicon-64.svg')">SVG</button>
+    </div>
+    <div class="favicon-slot">
+      <div class="favicon-chip dark" style="width: 80px; height: 80px;">
+        <svg id="fav-dark" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" width="64" height="64">
+          <rect width="64" height="64" fill="#2A1810"/>
+          <text x="32" y="54" font-family="Fraunces, Georgia, serif" font-size="58" font-weight="300" fill="#FAF4EB" text-anchor="middle" style="font-variation-settings: 'opsz' 96, 'SOFT' 0;">N</text>
+        </svg>
+      </div>
+      <div class="favicon-label">DARK</div>
+      <div class="favicon-note">Dark mode</div>
+      <button class="dl-mini" onclick="downloadSVG('fav-dark','nuribi-favicon-dark.svg')">SVG</button>
+    </div>
+    <div class="favicon-slot">
+      <div class="favicon-chip aurum" style="width: 80px; height: 80px;">
+        <svg id="fav-app" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" width="64" height="64">
+          <rect width="64" height="64" fill="#2A1810"/>
+          <text x="32" y="54" font-family="Fraunces, Georgia, serif" font-size="58" font-weight="300" fill="#C8954A" text-anchor="middle" style="font-variation-settings: 'opsz' 96, 'SOFT' 0;">N</text>
+        </svg>
+      </div>
+      <div class="favicon-label">APP ICON</div>
+      <div class="favicon-note">iOS / Android</div>
+      <button class="dl-mini" onclick="downloadSVG('fav-app','nuribi-app-icon.svg')">SVG</button>
+    </div>
+    <div class="favicon-slot">
+      <div class="favicon-chip" style="width: 100px; height: 100px;">
+        <svg id="fav-master" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" width="80" height="80">
+          <text x="100" y="148" font-family="Fraunces, Georgia, serif" font-size="160" font-weight="300" fill="#2A1810" text-anchor="middle" style="font-variation-settings: 'opsz' 144, 'SOFT' 0;">N</text>
+        </svg>
+      </div>
+      <div class="favicon-label">512+</div>
+      <div class="favicon-note">Master</div>
+      <button class="dl-mini" onclick="downloadSVG('fav-master','nuribi-favicon-master.svg')">SVG</button>
+    </div>
+  </div>
+  
+  <p style="font-size: 13px; color: var(--quiet-stone); margin-top: 28px; line-height: 1.7;"><strong style="color: var(--espresso);">규칙 —</strong> <strong style="color: var(--espresso);">16px:</strong> Fraunces weight 700, opsz 9 (가장 두꺼운 디스플레이). <strong style="color: var(--espresso);">32~48px:</strong> weight 350~500, opsz 24~48. <strong style="color: var(--espresso);">64px+:</strong> 마스터 모노그램 (weight 300, opsz 144). <strong style="color: var(--espresso);">App Icon:</strong> Espresso 배경 + Aurum N 권장.</p>
+
+  <div class="section-footer">
+    <span class="brand">Nuribi · Brand Identity Guidebook</span>
+    <span class="page-num">Page 04 of 14 · Logo System</span>
+    <span class="stamp">2026 · Light meets you in Korea</span>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════
+     05 — COLOR SYSTEM
+═══════════════════════════════════════════════════════════════════ -->
+<section class="section" id="color">
+  <div class="section-header">
+    <div class="section-num">05</div>
+    <h2 class="section-title">컬러 <em>시스템</em></h2>
+    <div class="section-en">Color System</div>
+  </div>
+  
+  <!-- Primary -->
+  <div class="color-group">
+    <div class="color-group-title">primary · 황금빛 중심</div>
+    <div class="color-grid">
+      <div class="color-card feature">
+        <div class="color-swatch" style="background:#C8954A" data-hex="#C8954A" onclick="copyHex(this)"></div>
+        <div class="color-info">
+          <div class="color-name"><em>Aurum</em> · 황금</div>
+          <div class="color-role">Primary · Brand Hero</div>
+          <dl class="color-vals">
+            <dt>HEX</dt><dd>#C8954A</dd>
+            <dt>RGB</dt><dd>200 · 149 · 74</dd>
+            <dt>HSL</dt><dd>34° · 53% · 54%</dd>
+          </dl>
+          <p class="color-usage">브랜드 인식의 60%를 담당하는 핵심 컬러. 강조 라인, 디바이더, CTA 버튼, 액센트 디테일. 신뢰와 따스함의 중심점.</p>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#8B5E2C" data-hex="#8B5E2C" onclick="copyHex(this)"></div>
+        <div class="color-info">
+          <div class="color-name"><em>Aurum Deep</em></div>
+          <div class="color-role">Hover / Pressed</div>
+          <dl class="color-vals">
+            <dt>HEX</dt><dd>#8B5E2C</dd>
+          </dl>
+          <p class="color-usage">Aurum의 심화. 호버, 프레스 상태, 강조 텍스트.</p>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#2A1810" data-hex="#2A1810" onclick="copyHex(this)"></div>
+        <div class="color-info">
+          <div class="color-name"><em>Espresso</em> · 농묵</div>
+          <div class="color-role">Primary Text</div>
+          <dl class="color-vals">
+            <dt>HEX</dt><dd>#2A1810</dd>
+          </dl>
+          <p class="color-usage">차가운 검정 대신 따뜻한 다크. 본문, 헤드라인.</p>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#5C3A1E" data-hex="#5C3A1E" onclick="copyHex(this)"></div>
+        <div class="color-info">
+          <div class="color-name"><em>Bronze</em></div>
+          <div class="color-role">Editorial Dark</div>
+          <dl class="color-vals">
+            <dt>HEX</dt><dd>#5C3A1E</dd>
+          </dl>
+          <p class="color-usage">중간 톤. 캡션, 부제, 보조 헤드라인.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Secondary -->
+  <div class="color-group">
+    <div class="color-group-title">secondary · 따뜻한 광채</div>
+    <div class="color-grid">
+      <div class="color-card">
+        <div class="color-swatch" style="background:#FFE8D6" data-hex="#FFE8D6" onclick="copyHex(this)"></div>
+        <div class="color-info">
+          <div class="color-name"><em>Morning Mist</em></div>
+          <div class="color-role">Soft Glow</div>
+          <dl class="color-vals">
+            <dt>HEX</dt><dd>#FFE8D6</dd>
+            <dt>RGB</dt><dd>255 · 232 · 214</dd>
+          </dl>
+          <p class="color-usage">광채 그라디언트의 외곽. 강조 배경, 카드 헤더, 일러스트 글로우, 환영 메시지 영역.</p>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#D89B8C" data-hex="#D89B8C" onclick="copyHex(this)"></div>
+        <div class="color-info">
+          <div class="color-name"><em>Soft Petal</em></div>
+          <div class="color-role">Emotional Warmth</div>
+          <dl class="color-vals">
+            <dt>HEX</dt><dd>#D89B8C</dd>
+            <dt>RGB</dt><dd>216 · 155 · 140</dd>
+          </dl>
+          <p class="color-usage">감정·돌봄 표현. 후기·리뷰 영역, 환영 메시지, 사후 관리 알림.</p>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#1F4D5C" data-hex="#1F4D5C" onclick="copyHex(this)"></div>
+        <div class="color-info">
+          <div class="color-name"><em>Deep Pine</em></div>
+          <div class="color-role">Trust · Medical</div>
+          <dl class="color-vals">
+            <dt>HEX</dt><dd>#1F4D5C</dd>
+            <dt>RGB</dt><dd>31 · 77 · 92</dd>
+          </dl>
+          <p class="color-usage">의료 신뢰성 액센트. B2B 대시보드 헤더, 인증·검증 마크. 전체 사용량의 5% 이내로 절제.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Neutral -->
+  <div class="color-group">
+    <div class="color-group-title">neutral · 5 steps · 종이의 결</div>
+    <div class="color-grid" style="grid-template-columns: repeat(5, 1fr);">
+      <div class="color-card">
+        <div class="color-swatch" style="background:#FFFCF7; border-bottom: 1px solid rgba(0,0,0,0.06)" data-hex="#FFFCF7" onclick="copyHex(this)"></div>
+        <div class="color-info">
+          <div class="color-name"><em>Whisper</em></div>
+          <div class="color-role">N-0 · Highest White</div>
+          <dl class="color-vals"><dt>HEX</dt><dd>#FFFCF7</dd></dl>
+          <p class="color-usage">최상위 흰색. 카드 위 카드, 모달, 핵심 강조 영역.</p>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#FAF4EB; border-bottom: 1px solid rgba(0,0,0,0.06)" data-hex="#FAF4EB" onclick="copyHex(this)"></div>
+        <div class="color-info">
+          <div class="color-name"><em>Paper Cream</em></div>
+          <div class="color-role">N-50 · Background</div>
+          <dl class="color-vals"><dt>HEX</dt><dd>#FAF4EB</dd></dl>
+          <p class="color-usage">기본 페이지 배경. 차가운 흰색 대신 따뜻한 종이 톤.</p>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#F2E8D9" data-hex="#F2E8D9" onclick="copyHex(this)"></div>
+        <div class="color-info">
+          <div class="color-name"><em>Silk</em></div>
+          <div class="color-role">N-100 · Card Surface</div>
+          <dl class="color-vals"><dt>HEX</dt><dd>#F2E8D9</dd></dl>
+          <p class="color-usage">카드, 세컨더리 컨테이너. Paper Cream보다 살짝 진함.</p>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#C7B9A1" data-hex="#C7B9A1" onclick="copyHex(this)"></div>
+        <div class="color-info">
+          <div class="color-name"><em>Stone</em></div>
+          <div class="color-role">N-300 · Border / Divider</div>
+          <dl class="color-vals"><dt>HEX</dt><dd>#C7B9A1</dd></dl>
+          <p class="color-usage">디바이더, 보더, 스켈레톤 로딩, 비활성 상태 컨테이너.</p>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#8B7E6E" data-hex="#8B7E6E" onclick="copyHex(this)"></div>
+        <div class="color-info">
+          <div class="color-name"><em>Quiet Stone</em></div>
+          <div class="color-role">N-500 · Secondary Text</div>
+          <dl class="color-vals"><dt>HEX</dt><dd>#8B7E6E</dd></dl>
+          <p class="color-usage">캡션, 메타 정보, 보조 라벨, 비활성 텍스트.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Semantic -->
+  <div class="color-group">
+    <div class="color-group-title">semantic · 상태 표시</div>
+    <div class="color-grid" style="grid-template-columns: repeat(3, 1fr);">
+      <div class="color-card">
+        <div class="color-swatch" style="background:#5C8A7E" data-hex="#5C8A7E" onclick="copyHex(this)"></div>
+        <div class="color-info">
+          <div class="color-name"><em>Sage</em> · Success</div>
+          <div class="color-role">예약 완료 · 결제 성공</div>
+          <dl class="color-vals">
+            <dt>HEX</dt><dd>#5C8A7E</dd>
+            <dt>RGB</dt><dd>92 · 138 · 126</dd>
+          </dl>
+          <p class="color-usage">차가운 형광 그린 대신 차분한 세이지 그린. 의료 환경의 안정감과 어울리는 톤.</p>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#C9924A" data-hex="#C9924A" onclick="copyHex(this)"></div>
+        <div class="color-info">
+          <div class="color-name"><em>Honey</em> · Warning</div>
+          <div class="color-role">서류 보완 · 마감 임박</div>
+          <dl class="color-vals">
+            <dt>HEX</dt><dd>#C9924A</dd>
+            <dt>RGB</dt><dd>201 · 146 · 74</dd>
+          </dl>
+          <p class="color-usage">Aurum과 가깝되 살짝 어둡고 채도 낮음. 액센트가 아닌 경고임을 시각적으로 분리.</p>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background:#A04A4A" data-hex="#A04A4A" onclick="copyHex(this)"></div>
+        <div class="color-info">
+          <div class="color-name"><em>Madder</em> · Error</div>
+          <div class="color-role">예약 취소 · 결제 실패</div>
+          <dl class="color-vals">
+            <dt>HEX</dt><dd>#A04A4A</dd>
+            <dt>RGB</dt><dd>160 · 74 · 74</dd>
+          </dl>
+          <p class="color-usage">선명한 빨강 대신 깊은 매더 레드. 경각심을 주되 공포감은 주지 않음.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Gradient Specification -->
+  <div class="color-group">
+    <div class="color-group-title">gradient · 정량 사양</div>
+    <p style="font-size: 13px; color: var(--quiet-stone); margin-bottom: 24px; max-width: 720px; line-height: 1.7;">로고·히어로·키비주얼·스플래시 한정 사용. UI 대량 적용 금지. 그라디언트는 "새벽이 밝아오는" 메타포로, 따뜻한 어둠에서 따뜻한 빛으로의 전이를 표현합니다.</p>
+    
+    <div class="grad-spec">
+      <div class="grad-bar"></div>
+      <div class="grad-stops">
+        <div class="grad-stop"><span class="pct">STOP 1 · 0%</span><span class="hex">#2A1810</span><span class="lbl">Espresso</span></div>
+        <div class="grad-stop"><span class="pct">STOP 2 · 50%</span><span class="hex">#8B5E2C</span><span class="lbl">Aurum Deep</span></div>
+        <div class="grad-stop"><span class="pct">STOP 3 · 100%</span><span class="hex">#FFE8D6</span><span class="lbl">Morning Mist</span></div>
+      </div>
+      <pre class="grad-code">/* Brand Gradient · Dawn */
+background: linear-gradient(110deg, #2A1810 0%, #8B5E2C 50%, #FFE8D6 100%);
+
+/* Tokens */
+--nuribi-grad-dawn:    linear-gradient(110deg, #2A1810 0%, #8B5E2C 50%, #FFE8D6 100%);
+--nuribi-grad-morning: linear-gradient(110deg, #8B5E2C 0%, #FFE8D6 100%);
+--nuribi-grad-dusk:    linear-gradient(110deg, #2A1810 0%, #5C3A1E 100%);
+
+/* 110deg = 좌하단→우상단. "떠오르는 방향"을 암시. */</pre>
+    </div>
+  </div>
+  
+  <div class="palette-download">
+    <div class="palette-download-text">
+      <h4><em>전체 팔레트</em></h4>
+      <p>JSON · ASE 형식으로 디자이너에게 전달 가능</p>
+    </div>
+    <div class="dl-group">
+      <button class="dl-btn" onclick="downloadPaletteJSON()">JSON</button>
+      <button class="dl-btn" onclick="downloadPaletteSVG()">SVG · Swatches</button>
+      <button class="dl-btn" onclick="downloadPaletteCSS()">CSS · Variables</button>
+    </div>
+  </div>
+
+  <div class="section-footer">
+    <span class="brand">Nuribi · Brand Identity Guidebook</span>
+    <span class="page-num">Page 05 of 14 · Color System</span>
+    <span class="stamp">2026 · Light meets you in Korea</span>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════
+     06 — TYPOGRAPHY
+═══════════════════════════════════════════════════════════════════ -->
+<section class="section" id="typography">
+  <div class="section-header">
+    <div class="section-num">06</div>
+    <h2 class="section-title">타이포그래피 <em>체계</em></h2>
+    <div class="section-en">Typography</div>
+  </div>
+  
+  <!-- Display Latin -->
+  <div class="type-spec">
+    <dl class="type-meta">
+      <dt>Family</dt><dd>Fraunces</dd>
+      <dt>Foundry</dt><dd>Undercase Type · OFL</dd>
+      <dt>Use</dt><dd>Display, headlines, brand voice</dd>
+      <dt>Weights</dt><dd>200 · 300 · 400 · 700</dd>
+      <dt>Variations</dt><dd>opsz 9–144 · SOFT 0–100</dd>
+    </dl>
+    <div class="type-sample display-en">The light that <em>meets you</em></div>
+  </div>
+  
+  <!-- Display Korean -->
+  <div class="type-spec">
+    <dl class="type-meta">
+      <dt>Family</dt><dd>Gowun Batang</dd>
+      <dt>Foundry</dt><dd>Gowun · OFL</dd>
+      <dt>Use</dt><dd>Korean display, brand wordmark</dd>
+      <dt>Weights</dt><dd>400 · 700</dd>
+    </dl>
+    <div class="type-sample display-kr">한국에서 만나는 빛</div>
+  </div>
+  
+  <!-- Body Latin -->
+  <div class="type-spec">
+    <dl class="type-meta">
+      <dt>Family</dt><dd>Manrope</dd>
+      <dt>Foundry</dt><dd>Mikhail Sharanda · OFL</dd>
+      <dt>Use</dt><dd>UI body, English captions</dd>
+      <dt>Weights</dt><dd>300 · 400 · 500 · 700</dd>
+    </dl>
+    <div class="type-sample body-en">For travelers seeking what makes Korean dermatology different — its precision, its warmth, its quiet attention to detail. Nuribi exists to be your guide through that experience, from the first inquiry to the long flight home.</div>
+  </div>
+  
+  <!-- Body Korean -->
+  <div class="type-spec">
+    <dl class="type-meta">
+      <dt>Family</dt><dd>Noto Serif KR</dd>
+      <dt>Foundry</dt><dd>Google · OFL</dd>
+      <dt>Use</dt><dd>Korean body, long-form reading</dd>
+      <dt>Weights</dt><dd>200–900</dd>
+    </dl>
+    <div class="type-sample body-kr">누리비는 외국인 환자가 한국 의료를 만나는 첫 순간부터 출국까지의 모든 여정을 빛으로 안내합니다. 가격은 투명하게, 정보는 정확하게, 그리고 그 모든 과정을 환자의 모국어로 전달합니다.</div>
+  </div>
+  
+  <!-- Mono -->
+  <div class="type-spec">
+    <dl class="type-meta">
+      <dt>Family</dt><dd>JetBrains Mono</dd>
+      <dt>Foundry</dt><dd>JetBrains · OFL</dd>
+      <dt>Use</dt><dd>Code, technical specs, eyebrows</dd>
+      <dt>Weights</dt><dd>300 · 400 · 500</dd>
+    </dl>
+    <div class="type-sample mono">CONCEPT_001 · The light that meets you<br>HEX #C8954A · RGB 200,149,74 · CMYK 13,32,77,3<br>FOUNDED 2026 · SEOUL · KR</div>
+  </div>
+  
+  <!-- Type Scale -->
+  <div class="type-scale">
+    <div class="type-scale-title"><em>Type Scale</em> · 디지털 디스플레이 기준</div>
+    <div class="type-scale-row">
+      <span class="label">Display</span>
+      <span>120 / 0.85</span>
+      <span>w. 200</span>
+      <span class="demo">NURIBI</span>
+    </div>
+    <div class="type-scale-row">
+      <span class="label">H1</span>
+      <span>72 / 1.05</span>
+      <span>w. 300</span>
+      <span class="demo">세상의 빛이 닿는 곳</span>
+    </div>
+    <div class="type-scale-row">
+      <span class="label">H2</span>
+      <span>56 / 1.1</span>
+      <span>w. 350</span>
+      <span class="demo">우리가 지키는 네 가지</span>
+    </div>
+    <div class="type-scale-row">
+      <span class="label">H3</span>
+      <span>32 / 1.25</span>
+      <span>w. 400</span>
+      <span class="demo">환자가 중심이다</span>
+    </div>
+    <div class="type-scale-row">
+      <span class="label">Body L</span>
+      <span>17 / 1.7</span>
+      <span>w. 350</span>
+      <span class="demo">본문 텍스트의 기본 크기. 가독성 우선</span>
+    </div>
+    <div class="type-scale-row">
+      <span class="label">Body</span>
+      <span>15 / 1.75</span>
+      <span>w. 350</span>
+      <span class="demo">표준 본문</span>
+    </div>
+    <div class="type-scale-row">
+      <span class="label">Caption</span>
+      <span>13 / 1.5</span>
+      <span>w. 400</span>
+      <span class="demo">캡션 · 보조 정보</span>
+    </div>
+    <div class="type-scale-row">
+      <span class="label">Eyebrow</span>
+      <span>11 / 1.4</span>
+      <span>0.2em</span>
+      <span class="demo">PRINCIPLE 01</span>
+    </div>
+  </div>
+  
+  <!-- Weight Guide -->
+  <h3 style="font-family: var(--font-display); font-size: 24px; font-weight: 350; font-style: italic; color: var(--espresso); margin: 64px 0 24px; letter-spacing: -0.01em; font-variation-settings: 'opsz' 96, 'SOFT' 100;"><em>Weight Guide</em> · Fraunces 활용</h3>
+  
+  <div class="weight-guide">
+    <div class="weight-card">
+      <div class="weight-spec">200 · Thin</div>
+      <div class="weight-display" style="font-weight: 200; font-variation-settings: 'opsz' 144, 'SOFT' 0;">NURIBI</div>
+      <p>워드마크 표준. 디스플레이 헤드라인. 광택과 절제.</p>
+    </div>
+    <div class="weight-card">
+      <div class="weight-spec">300 · Light</div>
+      <div class="weight-display" style="font-weight: 300; font-variation-settings: 'opsz' 96, 'SOFT' 30;">NURIBI</div>
+      <p>대형 헤드라인. 모노그램 N. 균형 잡힌 우아함.</p>
+    </div>
+    <div class="weight-card">
+      <div class="weight-spec">400 · Regular Italic</div>
+      <div class="weight-display" style="font-weight: 400; font-style: italic; font-variation-settings: 'opsz' 48, 'SOFT' 100;">Nuribi</div>
+      <p>이탤릭 강조. 인용. 태그라인. 부드러운 변주.</p>
+    </div>
+  </div>
+  
+  <p style="margin-top: 28px; font-size: 13px; color: var(--quiet-stone); line-height: 1.7;"><strong style="color: var(--espresso);">letter-spacing —</strong> Display(0.28em) · H1↑(−2.5%) · Body(0) · Eyebrow(+20%). <strong style="color: var(--espresso);">font-variation-settings —</strong> opsz는 폰트 크기에 맞춰 동적 조정 (24/48/96/144). SOFT는 형식성 ↔ 부드러움 (0=클래식, 100=따뜻함). <strong style="color: var(--espresso);">활용 원칙:</strong> 워드마크는 항상 opsz 144 + SOFT 0. 본문 이탤릭은 opsz 48 + SOFT 100.</p>
+
+  <div class="section-footer">
+    <span class="brand">Nuribi · Brand Identity Guidebook</span>
+    <span class="page-num">Page 06 of 14 · Typography</span>
+    <span class="stamp">2026 · Light meets you in Korea</span>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════
+     07 — VOICE
+═══════════════════════════════════════════════════════════════════ -->
+<section class="section" id="voice">
+  <div class="section-header">
+    <div class="section-num">07</div>
+    <h2 class="section-title">브랜드 <em>보이스</em></h2>
+    <div class="section-en">Brand Voice</div>
+  </div>
+  
+  <div class="voice-grid">
+    <div class="voice-principle">
+      <div class="voice-principle-num">PRINCIPLE 01</div>
+      <h3 class="voice-principle-title">정확하되 따뜻한</h3>
+      <p class="voice-principle-body">의료의 정확성은 양보하지 않습니다. 동시에 환자의 불안을 인지합니다. "수수료는 12~18% 범위이며, 추가 비용은 사전에 알려드립니다" — 사실은 차갑게, 표현은 안전하게.</p>
+    </div>
+    <div class="voice-principle">
+      <div class="voice-principle-num">PRINCIPLE 02</div>
+      <h3 class="voice-principle-title">신뢰하되 모던한</h3>
+      <p class="voice-principle-body">의료의 무거운 권위 대신, 디지털 네이티브가 신뢰할 수 있는 가벼운 정확함. "세계 최고", "프리미엄" 같은 과장은 금지. 숫자, 절차, 투명성이 신뢰를 증명합니다.</p>
+    </div>
+    <div class="voice-principle">
+      <div class="voice-principle-num">PRINCIPLE 03</div>
+      <h3 class="voice-principle-title">조용하되 친근한</h3>
+      <p class="voice-principle-body">간결함과 차가움은 다릅니다. 짧은 문장, 명확한 주어, 앞에 두는 핵심 정보. 이모지는 B2C 환자 앱에 한해 매우 절제된 사용. B2B 인터페이스는 무이모지 원칙.</p>
+    </div>
+  </div>
+  
+  <div class="voice-examples">
+    <div class="voice-ex yes">
+      <div class="voice-ex-tag">✓ DO · 환영 메시지</div>
+      <div class="voice-ex-context">B2C · 첫 진입</div>
+      <div class="voice-ex-text">한국 피부과, 이제 망설임 없이.<br>당신의 언어로, 당신의 속도로.</div>
+      <div class="voice-ex-text-en">Korean dermatology — in your language, at your pace.</div>
+    </div>
+    <div class="voice-ex no">
+      <div class="voice-ex-tag">✕ DON'T · 환영 메시지</div>
+      <div class="voice-ex-context">B2C · 첫 진입</div>
+      <div class="voice-ex-text">세계 최고의 K-뷰티를 지금 바로 경험하세요! 🎉</div>
+      <div class="voice-ex-text-en">Experience world-class K-Beauty NOW! 🎉</div>
+    </div>
+    
+    <div class="voice-ex yes">
+      <div class="voice-ex-tag">✓ DO · 가격 안내</div>
+      <div class="voice-ex-context">B2C · 시술 페이지</div>
+      <div class="voice-ex-text">광채 레이저 1회 · 280,000원<br>(세금 포함, 마취·진정제 별도 시 안내)</div>
+      <div class="voice-ex-text-en">Glow Laser · ₩280,000 — taxes included; sedation, if applied, will be quoted separately.</div>
+    </div>
+    <div class="voice-ex no">
+      <div class="voice-ex-tag">✕ DON'T · 가격 안내</div>
+      <div class="voice-ex-context">B2C · 시술 페이지</div>
+      <div class="voice-ex-text">광채 레이저 — 가격 문의 (특가 진행 중!)</div>
+      <div class="voice-ex-text-en">Glow Laser — Price upon inquiry (Special offer!)</div>
+    </div>
+    
+    <div class="voice-ex yes">
+      <div class="voice-ex-tag">✓ DO · B2B 가치 제안</div>
+      <div class="voice-ex-context">B2B · 병원 영업</div>
+      <div class="voice-ex-text">외국인 환자 운영 인프라.<br>당신의 병원은 시술에만 집중하세요.</div>
+      <div class="voice-ex-text-en">Foreign patient operations, handled. Your clinic focuses on care.</div>
+    </div>
+    <div class="voice-ex no">
+      <div class="voice-ex-tag">✕ DON'T · B2B 가치 제안</div>
+      <div class="voice-ex-context">B2B · 병원 영업</div>
+      <div class="voice-ex-text">혁신적인 AI 기반 외국인 환자 솔루션 플랫폼!</div>
+      <div class="voice-ex-text-en">Innovative AI-powered foreign patient solution platform!</div>
+    </div>
+  </div>
+
+  <div class="section-footer">
+    <span class="brand">Nuribi · Brand Identity Guidebook</span>
+    <span class="page-num">Page 07 of 14 · Brand Voice</span>
+    <span class="stamp">2026 · Light meets you in Korea</span>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════
+     08 — MULTILINGUAL
+═══════════════════════════════════════════════════════════════════ -->
+<section class="section" id="multilingual">
+  <div class="section-header">
+    <div class="section-num">08</div>
+    <h2 class="section-title">다국어 <em>표기</em></h2>
+    <div class="section-en">Multilingual System</div>
+  </div>
+  
+  <table class="multi-table">
+    <thead>
+      <tr>
+        <th style="width: 18%">Language · 언어</th>
+        <th style="width: 32%">Display · 표기</th>
+        <th>Notes · 사용 노트</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <div class="multi-lang">
+            <span class="multi-lang-name">Korean · 한국어</span>
+            <span class="multi-lang-script">HANGUL · GOWUN BATANG</span>
+          </div>
+        </td>
+        <td><div class="multi-display kr">누리비</div></td>
+        <td><div class="multi-note">기본 한국어 표기. 한국 내 행정·계약·상표 출원 시 사용. 영문 'Nuribi'와 병기 가능.</div></td>
+      </tr>
+      <tr>
+        <td>
+          <div class="multi-lang">
+            <span class="multi-lang-name">English · 영어</span>
+            <span class="multi-lang-script">LATIN · FRAUNCES ITALIC</span>
+          </div>
+        </td>
+        <td><div class="multi-display en">NURIBI</div></td>
+        <td><div class="multi-note">국제 마스터. 발음 /ˈnu.ɾi.bi/ — 첫 음절 강세, 부드러운 흐름. 영어권 즉시 인식, 혼동 단어 없음 확인.</div></td>
+      </tr>
+      <tr>
+        <td>
+          <div class="multi-lang">
+            <span class="multi-lang-name">Japanese · 日本語</span>
+            <span class="multi-lang-script">KATAKANA · 塗り美 PHONETIC</span>
+          </div>
+        </td>
+        <td><div class="multi-display jp">ヌリビ</div></td>
+        <td><div class="multi-note">일본어 음 ヌリビ는 동음이의 '塗り美'(바르는 美)와 일치. 일본 1차 시장 마케팅에서 K-뷰티 카테고리 즉각 정렬 효과. 해시태그 #ヌリビ 권장.</div></td>
+      </tr>
+      <tr>
+        <td>
+          <div class="multi-lang">
+            <span class="multi-lang-name">Chinese · 中文</span>
+            <span class="multi-lang-script">SIMPLIFIED · PHASE 2</span>
+          </div>
+        </td>
+        <td><div class="multi-display cn">努里碧</div></td>
+        <td><div class="multi-note">간체 음역. <strong>努</strong>(노력)·<strong>里</strong>(마을)·<strong>碧</strong>(푸른빛). Phase 2 중국 진입 시 商標 등록과 함께 한자 의미 안전성 재검증.</div></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-footer">
+    <span class="brand">Nuribi · Brand Identity Guidebook</span>
+    <span class="page-num">Page 08 of 14 · Multilingual</span>
+    <span class="stamp">2026 · Light meets you in Korea</span>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════
+     09 — DON'TS
+═══════════════════════════════════════════════════════════════════ -->
+<section class="section" id="donts">
+  <div class="section-header">
+    <div class="section-num">09</div>
+    <h2 class="section-title">금지 <em>사용</em></h2>
+    <div class="section-en">Don'ts</div>
+  </div>
+  
+  <div class="donts-grid">
+    <div class="dont-card">
+      <div class="dont-num">01</div>
+      <div class="dont-canvas">
+        <svg viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(100 40) scale(1.5 0.65)">
+            <text x="0" y="6" font-family="Fraunces" font-size="34" font-weight="250" fill="#2A1810" text-anchor="middle" style="letter-spacing: 0.18em; font-variation-settings: 'opsz' 144, 'SOFT' 0;">NURIBI</text>
+          </g>
+        </svg>
+      </div>
+      <div class="dont-label">비율 왜곡 금지</div>
+    </div>
+    
+    <div class="dont-card">
+      <div class="dont-num">02</div>
+      <div class="dont-canvas">
+        <svg viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+          <g transform="rotate(-12 100 40)">
+            <text x="100" y="48" font-family="Fraunces" font-size="28" font-weight="250" fill="#2A1810" text-anchor="middle" style="letter-spacing: 0.18em; font-variation-settings: 'opsz' 144, 'SOFT' 0;">NURIBI</text>
+          </g>
+        </svg>
+      </div>
+      <div class="dont-label">회전 금지</div>
+    </div>
+    
+    <div class="dont-card">
+      <div class="dont-num">03</div>
+      <div class="dont-canvas" style="background: #FFD166">
+        <svg viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+          <text x="100" y="48" font-family="Fraunces" font-size="28" font-weight="250" fill="#2A9D8F" text-anchor="middle" style="letter-spacing: 0.18em; font-variation-settings: 'opsz' 144, 'SOFT' 0;">NURIBI</text>
+        </svg>
+      </div>
+      <div class="dont-label">임의 컬러 변경</div>
+    </div>
+    
+    <div class="dont-card">
+      <div class="dont-num">04</div>
+      <div class="dont-canvas" style="background: linear-gradient(45deg, #FF6B6B, #4ECDC4, #FFD166)">
+        <svg viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+          <text x="100" y="48" font-family="Fraunces" font-size="28" font-weight="250" fill="#2A1810" text-anchor="middle" style="letter-spacing: 0.18em; font-variation-settings: 'opsz' 144, 'SOFT' 0;">NURIBI</text>
+        </svg>
+      </div>
+      <div class="dont-label">번잡한 배경</div>
+    </div>
+    
+    <div class="dont-card">
+      <div class="dont-num">05</div>
+      <div class="dont-canvas">
+        <svg viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+          <text x="100" y="48" font-family="Fraunces" font-size="28" font-weight="250" fill="#2A1810" text-anchor="middle" style="letter-spacing: 0.18em; font-variation-settings: 'opsz' 144, 'SOFT' 0; filter: drop-shadow(2px 3px 2px rgba(0,0,0,0.4));">NURIBI</text>
+        </svg>
+      </div>
+      <div class="dont-label">그림자 / 효과 추가</div>
+    </div>
+    
+    <div class="dont-card">
+      <div class="dont-num">06</div>
+      <div class="dont-canvas">
+        <svg viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+          <text x="100" y="48" font-family="Fraunces" font-size="28" font-weight="250" fill="#2A1810" stroke="#000" stroke-width="1.2" text-anchor="middle" style="letter-spacing: 0.18em; font-variation-settings: 'opsz' 144, 'SOFT' 0;">NURIBI</text>
+        </svg>
+      </div>
+      <div class="dont-label">테두리 추가</div>
+    </div>
+    
+    <div class="dont-card">
+      <div class="dont-num">07</div>
+      <div class="dont-canvas">
+        <svg viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+          <text x="100" y="50" font-family="Comic Sans MS, cursive" font-size="26" font-weight="700" fill="#2A1810" text-anchor="middle">NURIBI</text>
+        </svg>
+      </div>
+      <div class="dont-label">폰트 임의 교체</div>
+    </div>
+    
+    <div class="dont-card">
+      <div class="dont-num">08</div>
+      <div class="dont-canvas">
+        <svg viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+          <text x="100" y="48" font-family="Fraunces" font-size="28" font-weight="250" fill="#2A1810" text-anchor="middle" opacity="0.18" style="letter-spacing: 0.18em; font-variation-settings: 'opsz' 144, 'SOFT' 0;">NURIBI</text>
+        </svg>
+      </div>
+      <div class="dont-label">불충분한 대비</div>
+    </div>
+  </div>
+
+  <div class="section-footer">
+    <span class="brand">Nuribi · Brand Identity Guidebook</span>
+    <span class="page-num">Page 09 of 14 · Usage Rules</span>
+    <span class="stamp">2026 · Light meets you in Korea</span>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════
+     10 — PATTERN SYSTEM
+═══════════════════════════════════════════════════════════════════ -->
+<section class="section" id="pattern">
+  <div class="section-header">
+    <div class="section-num">10</div>
+    <h2 class="section-title">보조 그래픽 <em>시스템</em></h2>
+    <div class="section-en">Secondary Pattern · Dawn</div>
+  </div>
+  
+  <div class="pattern-intro">
+    <div class="pattern-intro-text">
+      <h3>워드마크가 못 하는 일을<br><em>새벽이</em> 한다.</h3>
+      <p>워드마크는 IR·병원 파트너에서 <strong>고전적 권위</strong>를 발휘합니다. 하지만 환자 앱·온보딩에서는 <strong>인간적 온도</strong>가 필요합니다. 별도의 <strong>Dawn Layer 패턴</strong>을 설계했습니다 — 동트는 새벽의 가로 그라디언트.</p>
+      <p>중심 메타포는 "한국에서의 첫 아침". 환자가 시술 받을 병원으로 향하는 길 위에 떠오르는 빛. 추상적이되, 우리 브랜드 이름의 의미를 시각적으로 직접 번역합니다.</p>
+      <p style="margin-top: 16px;"><strong style="color: var(--aurum-deep);">사용 원칙 —</strong> B2C 앱 백그라운드, 환영 화면, 카드 헤더, 로딩 상태에 사용. <strong style="color: var(--aurum-deep);">금지 —</strong> B2B 자료, 의료 정보 컨테이너, 가격 표시 영역에는 사용 금지.</p>
+    </div>
+    <div class="pattern-hero">
+      <svg id="pattern-hero-master" viewBox="0 0 480 360" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <linearGradient id="dawnHero" x1="0" y1="1" x2="0" y2="0">
+            <stop offset="0%" stop-color="#2A1810"/>
+            <stop offset="35%" stop-color="#5C3A1E"/>
+            <stop offset="60%" stop-color="#8B5E2C"/>
+            <stop offset="80%" stop-color="#C8954A"/>
+            <stop offset="92%" stop-color="#FFE8D6"/>
+            <stop offset="100%" stop-color="#FAF4EB"/>
+          </linearGradient>
+        </defs>
+        <rect width="480" height="360" fill="url(#dawnHero)"/>
+        <line x1="40" y1="290" x2="440" y2="290" stroke="#FFE8D6" stroke-width="0.5" opacity="0.4"/>
+        <text x="240" y="200" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="34" font-weight="300" fill="#FAF4EB" style="font-variation-settings: 'opsz' 96, 'SOFT' 0; letter-spacing: 0.25em;">NURIBI</text>
+        <text x="240" y="320" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#FFE8D6" letter-spacing="3" opacity="0.7">DAWN GRADIENT · MASTER</text>
+      </svg>
+      <div class="pattern-hero-actions">
+        <span class="dl-eyebrow">↓ DOWNLOAD</span>
+        <button class="dl-btn no-icon" onclick="downloadSVG('pattern-hero-master','nuribi-dawn-master.svg')">SVG</button>
+        <button class="dl-btn no-icon" onclick="downloadPNG('pattern-hero-master','nuribi-dawn-master',2048)">PNG 2048</button>
+      </div>
+    </div>
+  </div>
+  
+  <h3 style="font-family: var(--font-display); font-size: 24px; font-weight: 350; font-style: italic; color: var(--espresso); margin: 64px 0 24px; letter-spacing: -0.01em; font-variation-settings: 'opsz' 96, 'SOFT' 100;"><em>Pattern</em> 응용 사례</h3>
+  
+  <div class="pattern-apps">
+    <div class="pattern-app">
+      <div class="pattern-app-canvas">
+        <svg id="pattern-welcome" viewBox="0 0 270 480" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%">
+          <defs>
+            <linearGradient id="dwn1" x1="0" y1="1" x2="0" y2="0">
+              <stop offset="0%" stop-color="#2A1810"/>
+              <stop offset="40%" stop-color="#5C3A1E"/>
+              <stop offset="75%" stop-color="#8B5E2C"/>
+              <stop offset="95%" stop-color="#FFE8D6"/>
+            </linearGradient>
+          </defs>
+          <rect width="270" height="480" fill="url(#dwn1)"/>
+          <text x="135" y="180" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="22" font-weight="300" fill="#FAF4EB" style="font-variation-settings: 'opsz' 96, 'SOFT' 0; letter-spacing: 0.28em;">NURIBI</text>
+          <line x1="115" y1="200" x2="155" y2="200" stroke="#C8954A" stroke-width="0.5"/>
+          <text x="135" y="225" text-anchor="middle" font-family="Fraunces, serif" font-size="13" font-style="italic" fill="#FFE8D6" style="font-variation-settings: 'opsz' 24, 'SOFT' 100;">한국에서 만나는 빛.</text>
+          <rect x="60" y="370" width="150" height="42" rx="2" fill="#FAF4EB" opacity="0.95"/>
+          <text x="135" y="397" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" fill="#2A1810" letter-spacing="2">START</text>
+        </svg>
+      </div>
+      <div class="pattern-app-info">
+        <div class="pattern-app-name">앱 환영 화면</div>
+        <div class="pattern-app-actions">
+          <button class="dl-mini" onclick="downloadSVG('pattern-welcome','nuribi-pattern-welcome.svg')">SVG</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="pattern-app">
+      <div class="pattern-app-canvas">
+        <svg id="pattern-card" viewBox="0 0 270 480" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%">
+          <defs>
+            <linearGradient id="dwn2" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#2A1810"/>
+              <stop offset="60%" stop-color="#8B5E2C"/>
+              <stop offset="100%" stop-color="#C8954A"/>
+            </linearGradient>
+          </defs>
+          <rect width="270" height="480" fill="#FAF4EB"/>
+          <rect x="20" y="20" width="230" height="200" rx="2" fill="url(#dwn2)"/>
+          <text x="40" y="58" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="2.5" fill="#FFE8D6" font-weight="500">STATUS</text>
+          <text x="40" y="98" font-family="Fraunces, serif" font-size="22" font-weight="300" fill="#FAF4EB" style="font-variation-settings: 'opsz' 96, 'SOFT' 0;">시술 완료</text>
+          <text x="40" y="124" font-family="Noto Serif KR, serif" font-size="11" fill="#FFE8D6" opacity="0.85">1시간 전 · 파트너 피부과</text>
+          <line x1="40" y1="160" x2="80" y2="160" stroke="#FAF4EB" stroke-width="0.5" opacity="0.4"/>
+          <text x="40" y="195" font-family="Fraunces, serif" font-size="14" font-style="italic" fill="#FFE8D6" style="font-variation-settings: 'opsz' 24, 'SOFT' 100;">출국까지 14일.</text>
+          <rect x="20" y="240" width="230" height="68" rx="2" fill="#FFFCF7" stroke="#F2E8D9"/>
+          <text x="40" y="270" font-family="Noto Serif KR, serif" font-weight="700" font-size="13" fill="#2A1810">사후 관리 가이드</text>
+          <text x="40" y="290" font-family="Noto Serif KR, serif" font-size="11" fill="#8B7E6E">5분 읽기 · 8개 항목</text>
+          <rect x="20" y="316" width="230" height="68" rx="2" fill="#FFFCF7" stroke="#F2E8D9"/>
+          <text x="40" y="346" font-family="Noto Serif KR, serif" font-weight="700" font-size="13" fill="#2A1810">리뷰 작성</text>
+          <text x="40" y="366" font-family="Noto Serif KR, serif" font-size="11" fill="#8B7E6E">경험을 다음 환자에게</text>
+        </svg>
+      </div>
+      <div class="pattern-app-info">
+        <div class="pattern-app-name">카드 헤더</div>
+        <div class="pattern-app-actions">
+          <button class="dl-mini" onclick="downloadSVG('pattern-card','nuribi-pattern-card.svg')">SVG</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="pattern-app">
+      <div class="pattern-app-canvas">
+        <svg id="pattern-loading" viewBox="0 0 270 480" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%">
+          <rect width="270" height="480" fill="#FAF4EB"/>
+          <g transform="translate(135,240)" fill="none">
+            <circle class="ripple ripple-1" r="120" stroke="#2A1810" stroke-width="1.5"/>
+            <circle class="ripple ripple-2" r="120" stroke="#8B5E2C" stroke-width="1.5"/>
+            <circle class="ripple ripple-3" r="120" stroke="#C8954A" stroke-width="1.5"/>
+            <text y="6" text-anchor="middle" font-family="Fraunces, serif" font-size="36" font-weight="300" fill="#2A1810" style="font-variation-settings: 'opsz' 96, 'SOFT' 0;">N</text>
+          </g>
+          <text x="135" y="350" text-anchor="middle" font-family="Noto Serif KR, serif" font-weight="600" font-size="14" fill="#2A1810">병원과 연결하고 있습니다</text>
+          <text x="135" y="372" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="2.5" fill="#8B7E6E" font-weight="500">CONNECTING · 02 / 03</text>
+        </svg>
+      </div>
+      <div class="pattern-app-info">
+        <div class="pattern-app-name">로딩 애니메이션</div>
+        <div class="pattern-app-actions">
+          <button class="dl-mini" onclick="downloadSVG('pattern-loading','nuribi-pattern-loading.svg')">SVG</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-footer">
+    <span class="brand">Nuribi · Brand Identity Guidebook</span>
+    <span class="page-num">Page 10 of 14 · Pattern System</span>
+    <span class="stamp">2026 · Light meets you in Korea</span>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════
+     11 — APPLICATIONS
+═══════════════════════════════════════════════════════════════════ -->
+<section class="section" id="apps">
+  <div class="section-header">
+    <div class="section-num">11</div>
+    <h2 class="section-title">애플리케이션 <em>예시</em></h2>
+    <div class="section-en">Brand in Use</div>
+  </div>
+  
+  <p style="font-family: var(--font-display); font-size: clamp(24px, 3vw, 36px); font-weight: 250; font-style: italic; color: var(--bronze); max-width: 760px; margin-bottom: 64px; line-height: 1.4; font-variation-settings: 'opsz' 96, 'SOFT' 100;">"브랜드는 가이드북이 아니라, 실제 사용되는 모든 표면에서 살아난다."</p>
+  
+  <!-- Splash + App Icons row -->
+  <div class="apps-row apps-hero-row">
+    <!-- Splash Screen Mockup -->
+    <div class="app-tile app-tile-splash">
+      <div class="app-tile-canvas" style="background: #DDD; padding: 32px 0;">
+        <div class="iphone-mockup">
+          <div class="iphone-notch"></div>
+          <div class="iphone-status">
+            <span>9:41</span>
+            <span>●●●</span>
+          </div>
+          <svg id="splash-screen" viewBox="0 0 300 620" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" class="iphone-screen">
+            <defs>
+              <linearGradient id="splashDawn" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0%" stop-color="#2A1810"/>
+                <stop offset="40%" stop-color="#5C3A1E"/>
+                <stop offset="70%" stop-color="#8B5E2C"/>
+                <stop offset="92%" stop-color="#FFE8D6"/>
+                <stop offset="100%" stop-color="#FAF4EB"/>
+              </linearGradient>
+            </defs>
+            <rect width="300" height="620" fill="url(#splashDawn)"/>
+            <text x="150" y="295" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="32" font-weight="250" fill="#FAF4EB" style="font-variation-settings: 'opsz' 144, 'SOFT' 0; letter-spacing: 0.28em;">NURIBI</text>
+            <line x1="125" y1="320" x2="175" y2="320" stroke="#C8954A" stroke-width="0.6"/>
+            <text x="150" y="350" text-anchor="middle" font-family="Gowun Batang, serif" font-weight="700" font-size="20" fill="#FFE8D6" style="letter-spacing: 0.2em;">누리비</text>
+            <text x="150" y="395" text-anchor="middle" font-family="Fraunces, serif" font-size="14" font-style="italic" fill="#FFE8D6" opacity="0.85" style="font-variation-settings: 'opsz' 24, 'SOFT' 100;">The light that meets you in Korea.</text>
+            <rect x="75" y="525" width="150" height="46" rx="2" fill="#FAF4EB" opacity="0.95"/>
+            <text x="150" y="554" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" fill="#2A1810" letter-spacing="2.5">GET STARTED</text>
+          </svg>
+          <div class="iphone-home"></div>
+        </div>
+      </div>
+      <div class="app-tile-info">
+        <div class="app-tile-name">Splash Screen — iPhone</div>
+        <div class="app-tile-actions">
+          <button class="dl-mini" onclick="downloadSVG('splash-screen','nuribi-splash.svg')">SVG</button>
+          <button class="dl-mini" onclick="downloadPNG('splash-screen','nuribi-splash',2048)">PNG 2048</button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- App Icons stack -->
+    <div class="apps-icons-stack">
+      <div class="app-tile">
+        <div class="app-tile-canvas" style="background: var(--silk); padding: 36px 32px;">
+          <div style="display:flex; gap:20px; align-items:flex-end;">
+            <!-- 1024 (master, downloadable with bg baked in) -->
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+              <div style="width: 130px; height: 130px; border-radius: 28px; overflow: hidden; box-shadow: 0 20px 32px -10px rgba(42,24,16,0.3);">
+                <svg id="app-icon-master" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%; display: block;">
+                  <rect width="1024" height="1024" rx="180" fill="#2A1810"/>
+                  <text x="512" y="760" font-family="Fraunces, Georgia, serif" font-size="820" font-weight="300" fill="#C8954A" text-anchor="middle" style="font-variation-settings: 'opsz' 144, 'SOFT' 0;">N</text>
+                </svg>
+              </div>
+              <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.18em; color: var(--quiet-stone); text-transform: uppercase;">1024 · iOS Master</div>
+            </div>
+            <!-- 180 -->
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+              <div style="width: 80px; height: 80px; border-radius: 18px; background: #2A1810; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 20px -6px rgba(42,24,16,0.25);">
+                <svg viewBox="0 0 200 200" width="60" height="60"><text x="100" y="148" font-family="Fraunces, serif" font-size="160" font-weight="300" fill="#C8954A" text-anchor="middle" style="font-variation-settings: 'opsz' 144, 'SOFT' 0;">N</text></svg>
+              </div>
+              <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.18em; color: var(--quiet-stone); text-transform: uppercase;">180 · @3x</div>
+            </div>
+            <!-- Android round -->
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+              <div style="width: 80px; height: 80px; border-radius: 50%; background: #2A1810; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 20px -6px rgba(42,24,16,0.25);">
+                <svg viewBox="0 0 200 200" width="56" height="56"><text x="100" y="148" font-family="Fraunces, serif" font-size="160" font-weight="300" fill="#C8954A" text-anchor="middle" style="font-variation-settings: 'opsz' 144, 'SOFT' 0;">N</text></svg>
+              </div>
+              <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.18em; color: var(--quiet-stone); text-transform: uppercase;">Android</div>
+            </div>
+          </div>
+        </div>
+        <div class="app-tile-info">
+          <div class="app-tile-name">App Icons · 마스터</div>
+          <div class="app-tile-actions">
+            <button class="dl-mini" onclick="downloadSVG('app-icon-master','nuribi-app-icon-1024.svg')">SVG</button>
+            <button class="dl-mini" onclick="downloadPNG('app-icon-master','nuribi-app-icon-1024',1024)">PNG 1024</button>
+            <button class="dl-mini" onclick="downloadPNG('app-icon-master','nuribi-app-icon-2048',2048)">PNG 2048</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Business card front -->
+      <div class="app-tile">
+        <div class="app-tile-canvas" style="background: var(--silk); padding: 28px;">
+          <div class="bcard">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+              <div>
+                <div style="font-family: 'Fraunces', serif; font-weight: 250; font-size: 16px; letter-spacing: 0.28em; color: #2A1810; font-variation-settings: 'opsz' 96, 'SOFT' 0;">NURIBI</div>
+                <div style="font-family: 'Gowun Batang', serif; font-weight: 700; font-size: 9px; letter-spacing: 0.22em; color: #8B5E2C; margin-top: 4px;">누리비</div>
+              </div>
+              <div style="font-family: var(--font-mono); font-size: 7px; letter-spacing: 0.22em; color: var(--quiet-stone); text-transform: uppercase; text-align: right;">SEOUL · K-MEDICAL<br>FOUNDED 2026</div>
+            </div>
+            <div style="margin-top: auto;">
+              <div style="font-family: 'Noto Serif KR', serif; font-weight: 700; font-size: 13px; color: #2A1810;">윤제훈 · Yoon Je Hoon</div>
+              <div style="font-family: var(--font-mono); font-size: 8px; letter-spacing: 0.18em; color: #8B5E2C; text-transform: uppercase; margin-top: 2px; font-weight: 500;">CO-FOUNDER · CMO</div>
+              <div style="font-family: var(--font-body); font-size: 9px; color: var(--quiet-stone); margin-top: 12px; line-height: 1.6;">je@nuribi.com · +82 10 0000 0000<br>nuribi.com</div>
+            </div>
+          </div>
+        </div>
+        <div class="app-tile-info">
+          <div class="app-tile-name">명함 · 앞면</div>
+          <div class="app-tile-spec">90 × 52mm · WHISPER + AURUM</div>
+        </div>
+      </div>
+      
+      <!-- Business card back -->
+      <div class="app-tile">
+        <div class="app-tile-canvas" style="background: var(--silk); padding: 28px;">
+          <div class="bcard bcard-back">
+            <svg viewBox="0 0 380 220" preserveAspectRatio="xMidYMid slice" style="position: absolute; inset: 0; width: 100%; height: 100%;">
+              <defs>
+                <linearGradient id="bcardDawn" x1="0" y1="1" x2="0.3" y2="0">
+                  <stop offset="0%" stop-color="#2A1810"/>
+                  <stop offset="50%" stop-color="#5C3A1E"/>
+                  <stop offset="90%" stop-color="#8B5E2C"/>
+                  <stop offset="100%" stop-color="#C8954A"/>
+                </linearGradient>
+              </defs>
+              <rect width="380" height="220" fill="url(#bcardDawn)"/>
+            </svg>
+            <div style="position: relative; z-index: 1; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+              <div style="font-family: var(--font-mono); font-size: 7px; letter-spacing: 0.28em; color: rgba(255, 232, 214, 0.7); text-transform: uppercase; font-weight: 500;">THE LIGHT THAT MEETS YOU IN KOREA</div>
+              <div style="text-align: center;">
+                <div style="font-family: 'Fraunces', serif; font-weight: 250; font-size: 24px; letter-spacing: 0.32em; color: #FAF4EB; font-variation-settings: 'opsz' 144, 'SOFT' 0;">NURIBI</div>
+              </div>
+              <div style="font-family: var(--font-mono); font-size: 7px; letter-spacing: 0.22em; color: rgba(255, 232, 214, 0.6); text-transform: uppercase; text-align: right; font-weight: 500;">NRB · 2026</div>
+            </div>
+          </div>
+        </div>
+        <div class="app-tile-info">
+          <div class="app-tile-name">명함 · 뒷면</div>
+          <div class="app-tile-spec">DAWN GRADIENT · MASTER</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Email signature + Letterhead row -->
+  <div class="apps-row apps-row-2">
+    <div class="app-tile">
+      <div class="app-tile-canvas" style="background: #ECEFF1; padding: 24px;">
+        <div style="background: white; padding: 28px 32px; max-width: 480px; width: 100%; box-shadow: 0 10px 24px -8px rgba(42,24,16,0.12); font-family: var(--font-body);">
+          <div style="font-size: 13px; color: #2A1810; line-height: 1.65;">
+            안녕하세요, 사야카님.<br><br>
+            예약하신 강남 ABC 피부과 광채 레이저 시술이 6월 14일 오후 2시로 확정되었습니다. 시술 전 24시간 안내사항을 확인해 주세요.
+          </div>
+          <hr style="border: none; border-top: 1px solid #F2E8D9; margin: 24px 0;">
+          <div style="display: flex; gap: 16px; align-items: center;">
+            <div style="width: 44px; height: 44px; background: #2A1810; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <svg viewBox="0 0 200 200" width="32" height="32"><text x="100" y="148" font-family="Fraunces, serif" font-size="160" font-weight="300" fill="#C8954A" text-anchor="middle" style="font-variation-settings: 'opsz' 144, 'SOFT' 0;">N</text></svg>
+            </div>
+            <div>
+              <div style="font-family: 'Noto Serif KR', serif; font-weight: 700; font-size: 13px; color: #2A1810;">윤제훈 · Yoon Je Hoon</div>
+              <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.18em; color: #8B5E2C; text-transform: uppercase; margin-top: 2px; font-weight: 500;">NURIBI · CO-FOUNDER</div>
+              <div style="font-size: 11px; color: #8B7E6E; margin-top: 4px;">je@nuribi.com · nuribi.com</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="app-tile-info">
+        <div class="app-tile-name">이메일 서명</div>
+        <div class="app-tile-spec">EMAIL · TRANSACTIONAL</div>
+      </div>
+    </div>
+    
+    <div class="app-tile">
+      <div class="app-tile-canvas" style="background: #ECEFF1; padding: 24px;">
+        <div class="letterhead">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 18px; border-bottom: 1px solid #F2E8D9;">
+            <div>
+              <div style="font-family: 'Fraunces', serif; font-weight: 250; font-size: 18px; letter-spacing: 0.3em; color: #2A1810; font-variation-settings: 'opsz' 144, 'SOFT' 0;">NURIBI</div>
+              <div style="font-family: var(--font-mono); font-size: 8px; letter-spacing: 0.22em; color: #8B5E2C; text-transform: uppercase; margin-top: 4px; font-weight: 500;">SEOUL · K-MEDICAL</div>
+            </div>
+            <div style="font-family: var(--font-mono); font-size: 8px; letter-spacing: 0.18em; color: var(--quiet-stone); text-transform: uppercase; text-align: right; line-height: 1.6;">2026.06.14<br>NRB-2026-0142</div>
+          </div>
+          <div style="margin-top: 24px;">
+            <div style="font-family: 'Fraunces', serif; font-style: italic; font-size: 18px; color: #5C3A1E; line-height: 1.5; font-variation-settings: 'opsz' 96, 'SOFT' 100;">파트너십 제안서</div>
+            <div style="font-family: 'Noto Serif KR', serif; font-size: 11px; color: #2A1810; line-height: 1.85; margin-top: 14px;">강남 ABC 피부과 귀중,<br><br>외국인 환자 운영 인프라 파트너십에 관해 문의 드립니다. 첨부 자료를 검토해 주시기 바랍니다.</div>
+          </div>
+          <div style="margin-top: auto; padding-top: 18px; border-top: 1px solid #F2E8D9; font-family: var(--font-mono); font-size: 7px; letter-spacing: 0.22em; color: var(--quiet-stone); text-transform: uppercase; text-align: center;">nuribi.com · The light that meets you in Korea</div>
+        </div>
+      </div>
+      <div class="app-tile-info">
+        <div class="app-tile-name">레터헤드</div>
+        <div class="app-tile-spec">A4 · OFFICIAL DOCUMENT</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-footer">
+    <span class="brand">Nuribi · Brand Identity Guidebook</span>
+    <span class="page-num">Page 11 of 14 · Applications</span>
+    <span class="stamp">2026 · Light meets you in Korea</span>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════
+     12 — TAGLINES
+═══════════════════════════════════════════════════════════════════ -->
+<section class="section" id="taglines">
+  <div class="section-header">
+    <div class="section-num">12</div>
+    <h2 class="section-title">태그라인 <em>시스템</em></h2>
+    <div class="section-en">Tagline System</div>
+  </div>
+  
+  <div class="tagline-section">
+    <div class="tagline-card">
+      <div class="tagline-context">MASTER<br>BRAND</div>
+      <div class="tagline-list">
+        <div class="tagline-text-kr">한국에서 만나는 빛.</div>
+        <div class="tagline-text-en">The light that meets you in Korea.</div>
+      </div>
+    </div>
+    
+    <div class="tagline-card">
+      <div class="tagline-context">B2C APP<br>SPLASH</div>
+      <div class="tagline-list">
+        <div class="tagline-text-kr">한국 피부과, 이제 망설임 없이.</div>
+        <div class="tagline-text-en">Korean dermatology — without the guesswork.</div>
+      </div>
+    </div>
+    
+    <div class="tagline-card">
+      <div class="tagline-context">B2B HOSPITAL<br>PITCH</div>
+      <div class="tagline-list">
+        <div class="tagline-text-kr">외국인 환자 운영 인프라.<br>당신의 병원은 시술에만 집중하세요.</div>
+        <div class="tagline-text-en">Foreign patient operations, handled. Your clinic focuses on care.</div>
+      </div>
+    </div>
+    
+    <div class="tagline-card">
+      <div class="tagline-context">PRE-ARRIVAL<br>MESSAGE</div>
+      <div class="tagline-list">
+        <div class="tagline-text-kr">출국까지 14일.<br>가벼운 마음으로 비행기에 오르세요.</div>
+        <div class="tagline-text-en">14 days until your flight. We've prepared everything for you.</div>
+      </div>
+    </div>
+    
+    <div class="tagline-card">
+      <div class="tagline-context">POST-TREATMENT</div>
+      <div class="tagline-list">
+        <div class="tagline-text-kr">시술이 안전하게 끝났습니다.<br>한국에서 받은 빛이, 집까지 따라갑니다.</div>
+        <div class="tagline-text-en">Your treatment is complete. The light you found in Korea travels home with you.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-footer">
+    <span class="brand">Nuribi · Brand Identity Guidebook</span>
+    <span class="page-num">Page 12 of 14 · Taglines</span>
+    <span class="stamp">2026 · Light meets you in Korea</span>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════
+     13 — APPENDIX (CSS + Code)
+═══════════════════════════════════════════════════════════════════ -->
+<section class="section" id="appendix">
+  <div class="section-header">
+    <div class="section-num">13</div>
+    <h2 class="section-title">개발자 <em>부록</em></h2>
+    <div class="section-en">Appendix · Tokens & Code</div>
+  </div>
+  
+  <p style="font-family: var(--font-body-kr); font-size: 15px; color: var(--bronze); line-height: 1.7; max-width: 720px; margin-bottom: 48px;">디자인 시스템을 코드로 그대로 옮길 수 있는 토큰과 스니펫. 복사해서 프로젝트에 즉시 적용 가능합니다.</p>
+  
+  <div class="appendix-grid">
+    <!-- CSS Tokens -->
+    <div class="appendix-card">
+      <div class="appendix-head">
+        <h3>CSS Custom Properties</h3>
+        <button class="dl-btn" onclick="copyCodeBlock('code-tokens')">COPY</button>
+      </div>
+      <div class="appendix-meta">DESIGN TOKENS · :ROOT VARIABLES</div>
+      <pre class="code-block" id="code-tokens">:root {
+  /* ─── Colors · Primary ─── */
+  --nuribi-aurum:        #C8954A;  /* Brand hero */
+  --nuribi-aurum-deep:   #8B5E2C;  /* Hover/pressed */
+  --nuribi-espresso:     #2A1810;  /* Primary text */
+  --nuribi-bronze:       #5C3A1E;  /* Editorial dark */
+  
+  /* ─── Colors · Secondary ─── */
+  --nuribi-morning-mist: #FFE8D6;  /* Soft glow */
+  --nuribi-soft-petal:   #D89B8C;  /* Emotional warmth */
+  --nuribi-deep-pine:    #1F4D5C;  /* Trust accent ≤5% */
+  
+  /* ─── Colors · Neutral 5-step ─── */
+  --nuribi-n-0:          #FFFCF7;  /* Whisper */
+  --nuribi-n-50:         #FAF4EB;  /* Paper Cream */
+  --nuribi-n-100:        #F2E8D9;  /* Silk */
+  --nuribi-n-300:        #C7B9A1;  /* Stone */
+  --nuribi-n-500:        #8B7E6E;  /* Quiet Stone */
+  
+  /* ─── Colors · Semantic ─── */
+  --nuribi-success:      #5C8A7E;  /* Sage */
+  --nuribi-warning:      #C9924A;  /* Honey */
+  --nuribi-error:        #A04A4A;  /* Madder */
+  
+  /* ─── Gradients ─── */
+  --nuribi-grad-dawn:    linear-gradient(110deg,
+                          #2A1810 0%, #8B5E2C 50%, #FFE8D6 100%);
+  --nuribi-grad-morning: linear-gradient(110deg,
+                          #8B5E2C 0%, #FFE8D6 100%);
+  
+  /* ─── Typography ─── */
+  --nuribi-font-display:    'Fraunces', Georgia, serif;
+  --nuribi-font-display-kr: 'Gowun Batang', 'Noto Serif KR', serif;
+  --nuribi-font-body:       'Manrope', system-ui, sans-serif;
+  --nuribi-font-body-kr:    'Noto Serif KR', system-ui, serif;
+  --nuribi-font-mono:       'JetBrains Mono', 'SF Mono', monospace;
+  
+  /* ─── Wordmark Settings (variable font axes) ─── */
+  --nuribi-wordmark-opsz:    144;
+  --nuribi-wordmark-soft:    0;
+  --nuribi-wordmark-weight:  250;
+  --nuribi-wordmark-spacing: 0.28em;
+}</pre>
+    </div>
+    
+    <!-- Wordmark CSS -->
+    <div class="appendix-card">
+      <div class="appendix-head">
+        <h3>Wordmark CSS</h3>
+        <button class="dl-btn" onclick="copyCodeBlock('code-wordmark')">COPY</button>
+      </div>
+      <div class="appendix-meta">PRIMARY LOGO · TEXT-BASED</div>
+      <pre class="code-block" id="code-wordmark">/* Primary wordmark */
+.nuribi-wordmark {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 250;
+  font-size: 74px;
+  letter-spacing: 0.28em;
+  color: #2A1810;
+  font-variation-settings:
+    "opsz" 144,
+    "SOFT" 0;
+  text-transform: uppercase;
+}
+
+/* Stacked variant with descriptor */
+.nuribi-wordmark-stacked::after {
+  content: "SEOUL · K-MEDICAL";
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  color: #8B7E6E;
+  text-align: center;
+  padding-top: 8px;
+  margin-top: 8px;
+  border-top: 1px solid #C8954A;
+  width: 70px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Monogram (app icon) */
+.nuribi-monogram {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 300;
+  font-variation-settings: "opsz" 144, "SOFT" 0;
+  color: #C8954A;
+  background: #2A1810;
+  width: 1024px;
+  height: 1024px;
+  font-size: 820px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.05;
+}</pre>
+    </div>
+    
+    <!-- Loading Animation -->
+    <div class="appendix-card">
+      <div class="appendix-head">
+        <h3>Ripple Loading Animation</h3>
+        <button class="dl-btn" onclick="copyCodeBlock('code-loader')">COPY</button>
+      </div>
+      <div class="appendix-meta">SVG + SMIL · PATTERN APPLICATION</div>
+      <pre class="code-block" id="code-loader">&lt;svg viewBox="0 0 100 100" width="80" height="80"&gt;
+  &lt;g fill="none" stroke-width="1.5"&gt;
+    &lt;circle cx="50" cy="50" stroke="#2A1810"&gt;
+      &lt;animate attributeName="r"
+        values="12;42;72" dur="2.4s"
+        repeatCount="indefinite"/&gt;
+      &lt;animate attributeName="opacity"
+        values="1;0.4;0" dur="2.4s"
+        repeatCount="indefinite"/&gt;
+    &lt;/circle&gt;
+    &lt;circle cx="50" cy="50" stroke="#8B5E2C"&gt;
+      &lt;animate attributeName="r"
+        values="12;42;72" dur="2.4s"
+        begin=".8s" repeatCount="indefinite"/&gt;
+      &lt;animate attributeName="opacity"
+        values="1;0.4;0" dur="2.4s"
+        begin=".8s" repeatCount="indefinite"/&gt;
+    &lt;/circle&gt;
+    &lt;circle cx="50" cy="50" stroke="#C8954A"&gt;
+      &lt;animate attributeName="r"
+        values="12;42;72" dur="2.4s"
+        begin="1.6s" repeatCount="indefinite"/&gt;
+      &lt;animate attributeName="opacity"
+        values="1;0.4;0" dur="2.4s"
+        begin="1.6s" repeatCount="indefinite"/&gt;
+    &lt;/circle&gt;
+  &lt;/g&gt;
+  &lt;text x="50" y="58" text-anchor="middle"
+        font-family="Fraunces" font-size="22"
+        font-weight="300" fill="#2A1810"&gt;N&lt;/text&gt;
+&lt;/svg&gt;</pre>
+    </div>
+    
+    <!-- Font imports -->
+    <div class="appendix-card">
+      <div class="appendix-head">
+        <h3>Web Font Imports</h3>
+        <button class="dl-btn" onclick="copyCodeBlock('code-fonts')">COPY</button>
+      </div>
+      <div class="appendix-meta">GOOGLE FONTS · OFL LICENSE</div>
+      <pre class="code-block" id="code-fonts">&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+&lt;link rel="preconnect" href="https://fonts.gstatic.com"
+      crossorigin&gt;
+&lt;link href="https://fonts.googleapis.com/css2?
+  family=Fraunces:ital,opsz,wght,SOFT@
+    0,9..144,200..900,0..100;
+    1,9..144,200..900,0..100&amp;
+  family=Manrope:wght@200..800&amp;
+  family=Gowun+Batang:wght@400;700&amp;
+  family=Noto+Serif+KR:wght@200..900&amp;
+  family=JetBrains+Mono:wght@300;400;500&amp;
+  display=swap"
+  rel="stylesheet"&gt;
+
+/* All fonts are open-source (OFL).
+   No licensing required for commercial use. */</pre>
+    </div>
+  </div>
+  
+  <div class="appendix-meta-box">
+    <div>
+      <div style="font-family: var(--font-display); font-size: 22px; font-style: italic; color: var(--espresso); font-variation-settings: 'opsz' 48, 'SOFT' 100;"><em>Implementation Notes</em></div>
+      <p style="font-family: var(--font-body-kr); font-size: 14px; line-height: 1.75; color: var(--bronze); margin-top: 12px; max-width: 720px;">Fraunces는 가변 폰트(variable font)이므로 하나의 파일에서 weight 200–900, opsz 9–144, SOFT 0–100을 모두 활용할 수 있습니다. 정적 weight 사용 시 디스플레이는 Light(300), 본문은 Regular(400), 강조는 SemiBold(600)을 권장. 필요 시 <strong style="color: var(--espresso);">font-variation-settings</strong>로 최종 톤을 조정합니다.</p>
+    </div>
+    <button class="dl-btn" onclick="downloadSpecSheet()" style="font-size: 11px; padding: 12px 20px;">DOWNLOAD FULL SPEC · MD</button>
+  </div>
+
+  <div class="section-footer">
+    <span class="brand">Nuribi · Brand Identity Guidebook</span>
+    <span class="page-num">Page 13 of 14 · Appendix</span>
+    <span class="stamp">2026 · Light meets you in Korea</span>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════
+     14 — ASSET LIBRARY
+═══════════════════════════════════════════════════════════════════ -->
+<section class="section" id="assets">
+  <div class="section-header">
+    <div class="section-num">14</div>
+    <h2 class="section-title">에셋 <em>라이브러리</em></h2>
+    <div class="section-en">Asset Library</div>
+  </div>
+  
+  <div class="asset-hero">
+    <div class="asset-hero-content">
+      <h2>모든 자산을 <em>한 곳에서</em></h2>
+      <p>각 자산은 <strong style="color: var(--morning-mist);">본문의 해당 섹션</strong>에서 직접 다운로드할 수 있습니다 (로고는 04 Logo, 컬러는 05 Color, 패턴은 10 Pattern, 앱 아이콘은 11 Apps). 이 페이지는 모든 자산을 한 번에 모아 빠르게 찾기 위한 백업 인덱스입니다. SVG는 무한 확대 가능한 벡터, PNG는 일반적인 이미지 사용을 위한 라스터 포맷입니다.</p>
+    </div>
+  </div>
+  
+  <div class="asset-grid">
+    <div class="asset-row">
+      <div class="asset-row-label">
+        <div class="asset-row-name">Primary Wordmark</div>
+        <div class="asset-row-meta">NURIBI · LIGHT BG</div>
+      </div>
+      <div class="asset-row-actions">
+        <button class="dl-btn" onclick="downloadSVG('logo-primary','nuribi-logo-primary.svg')">SVG</button>
+        <button class="dl-btn" onclick="downloadPNG('logo-primary','nuribi-logo-primary',2048)">PNG</button>
+      </div>
+    </div>
+    <div class="asset-row">
+      <div class="asset-row-label">
+        <div class="asset-row-name">Wordmark · Dark</div>
+        <div class="asset-row-meta">NURIBI · DARK BG</div>
+      </div>
+      <div class="asset-row-actions">
+        <button class="dl-btn" onclick="downloadSVG('logo-dark','nuribi-wordmark-dark.svg')">SVG</button>
+        <button class="dl-btn" onclick="downloadPNG('logo-dark','nuribi-wordmark-dark',2048)">PNG</button>
+      </div>
+    </div>
+    <div class="asset-row">
+      <div class="asset-row-label">
+        <div class="asset-row-name">Stacked w/ Descriptor</div>
+        <div class="asset-row-meta">NURIBI · SEOUL · K-MEDICAL</div>
+      </div>
+      <div class="asset-row-actions">
+        <button class="dl-btn" onclick="downloadSVG('logo-stacked','nuribi-stacked.svg')">SVG</button>
+        <button class="dl-btn" onclick="downloadPNG('logo-stacked','nuribi-stacked',2048)">PNG</button>
+      </div>
+    </div>
+    <div class="asset-row">
+      <div class="asset-row-label">
+        <div class="asset-row-name">Korean Wordmark</div>
+        <div class="asset-row-meta">누리비 · KR ONLY</div>
+      </div>
+      <div class="asset-row-actions">
+        <button class="dl-btn" onclick="downloadSVG('logo-kr','nuribi-kr.svg')">SVG</button>
+        <button class="dl-btn" onclick="downloadPNG('logo-kr','nuribi-kr',2048)">PNG</button>
+      </div>
+    </div>
+    <div class="asset-row">
+      <div class="asset-row-label">
+        <div class="asset-row-name">Monogram · Light</div>
+        <div class="asset-row-meta">N · TIGHT SPACES</div>
+      </div>
+      <div class="asset-row-actions">
+        <button class="dl-btn" onclick="downloadSVG('logo-symbol','nuribi-monogram.svg')">SVG</button>
+        <button class="dl-btn" onclick="downloadPNG('logo-symbol','nuribi-monogram',2048)">PNG</button>
+      </div>
+    </div>
+    <div class="asset-row">
+      <div class="asset-row-label">
+        <div class="asset-row-name">Monogram · Dark</div>
+        <div class="asset-row-meta">N · DARK BG</div>
+      </div>
+      <div class="asset-row-actions">
+        <button class="dl-btn" onclick="downloadSVG('logo-symbol-dark','nuribi-monogram-dark.svg')">SVG</button>
+        <button class="dl-btn" onclick="downloadPNG('logo-symbol-dark','nuribi-monogram-dark',2048)">PNG</button>
+      </div>
+    </div>
+    <div class="asset-row">
+      <div class="asset-row-label">
+        <div class="asset-row-name">App Icon · Ready</div>
+        <div class="asset-row-meta">SQUARE · BAKED BG</div>
+      </div>
+      <div class="asset-row-actions">
+        <button class="dl-btn" onclick="downloadSVG('logo-app-icon','nuribi-app-icon.svg')">SVG</button>
+        <button class="dl-btn" onclick="downloadPNG('logo-app-icon','nuribi-app-icon',1024)">PNG 1024</button>
+        <button class="dl-btn" onclick="downloadPNG('logo-app-icon','nuribi-app-icon',2048)">PNG 2048</button>
+      </div>
+    </div>
+    <div class="asset-row">
+      <div class="asset-row-label">
+        <div class="asset-row-name">Color Palette</div>
+        <div class="asset-row-meta">JSON · CSS · SVG</div>
+      </div>
+      <div class="asset-row-actions">
+        <button class="dl-btn" onclick="downloadPaletteJSON()">JSON</button>
+        <button class="dl-btn" onclick="downloadPaletteCSS()">CSS</button>
+        <button class="dl-btn" onclick="downloadPaletteSVG()">SVG</button>
+      </div>
+    </div>
+    <div class="asset-row">
+      <div class="asset-row-label">
+        <div class="asset-row-name">Brand Spec Sheet</div>
+        <div class="asset-row-meta">README · MARKDOWN</div>
+      </div>
+      <div class="asset-row-actions">
+        <button class="dl-btn" onclick="downloadSpecSheet()">MD</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-footer">
+    <span class="brand">Nuribi · Brand Identity Guidebook</span>
+    <span class="page-num">Page 14 of 14 · Asset Library</span>
+    <span class="stamp">2026 · Light meets you in Korea</span>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div>
+    <div class="footer-mark">
+      <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+        <text x="30" y="48" font-family="Fraunces, Georgia, serif" font-size="56" font-weight="300" fill="#2A1810" text-anchor="middle" style="font-variation-settings: 'opsz' 144, 'SOFT' 0;">N</text>
+      </svg>
+      <span style="letter-spacing: 0.18em; font-size: 18px;">NURIBI · 누리비</span>
+    </div>
+    <div class="footer-tagline">The light that meets you in Korea.</div>
+  </div>
+  <div class="footer-meta">
+    Brand Identity Guidebook · v1.0<br>
+    Issued 2026 · Seoul<br>
+    NRB · INTERNAL DOCUMENT
+  </div>
+</footer>
+
+</div>
+</main>
+
+<div class="toast" id="toast">Copied to clipboard</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════
+// NURIBI Brand Guide — Download & Copy Utilities
+// ═══════════════════════════════════════════════════════════
+
+// Brand palette (single source of truth for downloads)
+const PALETTE = {
+  primary: [
+    { name: 'Aurum',        role: 'Primary · Brand Hero', hex: '#C8954A', rgb: '200, 149, 74',  hsl: '34, 53%, 54%' },
+    { name: 'Aurum Deep',   role: 'Hover / Pressed',      hex: '#8B5E2C', rgb: '139, 94, 44',   hsl: '30, 52%, 36%' },
+    { name: 'Espresso',     role: 'Primary Text',         hex: '#2A1810', rgb: '42, 24, 16',    hsl: '18, 45%, 11%' },
+    { name: 'Bronze',       role: 'Editorial Dark',       hex: '#5C3A1E', rgb: '92, 58, 30',    hsl: '27, 51%, 24%' }
+  ],
+  secondary: [
+    { name: 'Morning Mist', role: 'Soft Glow',            hex: '#FFE8D6', rgb: '255, 232, 214', hsl: '26, 100%, 92%' },
+    { name: 'Soft Petal',   role: 'Emotional Warmth',     hex: '#D89B8C', rgb: '216, 155, 140', hsl: '12, 49%, 70%' },
+    { name: 'Deep Pine',    role: 'Trust · Medical',      hex: '#1F4D5C', rgb: '31, 77, 92',    hsl: '195, 50%, 24%' }
+  ],
+  neutral: [
+    { name: 'Whisper',      role: 'N-0 · Highest White',  hex: '#FFFCF7', rgb: '255, 252, 247', hsl: '38, 100%, 99%' },
+    { name: 'Paper Cream',  role: 'N-50 · Background',    hex: '#FAF4EB', rgb: '250, 244, 235', hsl: '36, 60%, 95%' },
+    { name: 'Silk',         role: 'N-100 · Card Surface', hex: '#F2E8D9', rgb: '242, 232, 217', hsl: '36, 49%, 90%' },
+    { name: 'Stone',        role: 'N-300 · Border',       hex: '#C7B9A1', rgb: '199, 185, 161', hsl: '38, 24%, 71%' },
+    { name: 'Quiet Stone',  role: 'N-500 · Secondary Text', hex: '#8B7E6E', rgb: '139, 126, 110', hsl: '33, 13%, 49%' }
+  ],
+  semantic: [
+    { name: 'Sage',   role: 'Success', hex: '#5C8A7E', rgb: '92, 138, 126',  hsl: '169, 20%, 45%' },
+    { name: 'Honey',  role: 'Warning', hex: '#C9924A', rgb: '201, 146, 74',  hsl: '32, 54%, 54%' },
+    { name: 'Madder', role: 'Error',   hex: '#A04A4A', rgb: '160, 74, 74',   hsl: '0, 37%, 46%' }
+  ]
+};
+
+// ─── Toast utility ───
+function showToast(message) {
+  const toast = document.getElementById('toast');
+  toast.textContent = message;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2200);
+}
+
+// ─── Copy color hex to clipboard ───
+function copyHex(element) {
+  const hex = element.dataset.hex;
+  navigator.clipboard.writeText(hex).then(() => {
+    element.classList.add('copied');
+    showToast(`${hex} copied to clipboard`);
+    setTimeout(() => element.classList.remove('copied'), 1800);
+  }).catch(() => {
+    showToast('Copy failed — please select manually');
+  });
+}
+
+// ─── Serialize SVG with proper namespaces and embedded font CSS ───
+function serializeSVG(svgElement) {
+  const cloned = svgElement.cloneNode(true);
+  // Ensure namespaces
+  if (!cloned.getAttribute('xmlns')) {
+    cloned.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+  }
+  if (!cloned.getAttribute('xmlns:xlink')) {
+    cloned.setAttribute('xmlns:xlink', 'http://www.w3.org/1999/xlink');
+  }
+  
+  // Embed Google Fonts CSS so the SVG renders correctly when opened in browser viewers
+  const hasText = cloned.querySelector('text');
+  if (hasText) {
+    const styleEl = document.createElementNS('http://www.w3.org/2000/svg', 'style');
+    styleEl.textContent = `@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,200..900,0..100;1,9..144,200..900,0..100&family=Gowun+Batang:wght@400;700&family=Noto+Serif+KR:wght@200..900&display=swap');`;
+    cloned.insertBefore(styleEl, cloned.firstChild);
+  }
+  
+  const serializer = new XMLSerializer();
+  let svgString = serializer.serializeToString(cloned);
+  // Add XML declaration
+  if (!svgString.startsWith('<?xml')) {
+    svgString = '<?xml version="1.0" encoding="UTF-8"?>\n' + svgString;
+  }
+  return svgString;
+}
+
+// ─── Download SVG file ───
+function downloadSVG(svgId, filename) {
+  const svg = document.getElementById(svgId);
+  if (!svg) {
+    showToast('SVG not found');
+    return;
+  }
+  const svgString = serializeSVG(svg);
+  const blob = new Blob([svgString], { type: 'image/svg+xml;charset=utf-8' });
+  triggerDownload(blob, filename);
+  showToast(`Downloaded · ${filename}`);
+}
+
+// ─── Download PNG (rendered from SVG via canvas) ───
+async function downloadPNG(svgId, basename, targetWidth) {
+  const svg = document.getElementById(svgId);
+  if (!svg) {
+    showToast('SVG not found');
+    return;
+  }
+  
+  // Wait for fonts to fully load before rasterizing
+  if (document.fonts && document.fonts.ready) {
+    await document.fonts.ready;
+  }
+  
+  // Determine aspect ratio from viewBox
+  const vb = svg.getAttribute('viewBox');
+  let vbW = 1024, vbH = 1024;
+  if (vb) {
+    const parts = vb.split(/\s+/).map(Number);
+    if (parts.length === 4) {
+      vbW = parts[2];
+      vbH = parts[3];
+    }
+  }
+  const aspect = vbH / vbW;
+  const targetHeight = Math.round(targetWidth * aspect);
+  
+  // Serialize SVG (with embedded font import)
+  const svgString = serializeSVG(svg);
+  const svgBlob = new Blob([svgString], { type: 'image/svg+xml;charset=utf-8' });
+  const svgUrl = URL.createObjectURL(svgBlob);
+  
+  const img = new Image();
+  img.crossOrigin = 'anonymous';
+  
+  await new Promise((resolve, reject) => {
+    img.onload = resolve;
+    img.onerror = reject;
+    img.src = svgUrl;
+  }).catch(() => {
+    showToast('Render failed — please try again');
+  });
+  
+  // Render to canvas at high resolution
+  const canvas = document.createElement('canvas');
+  canvas.width = targetWidth;
+  canvas.height = targetHeight;
+  const ctx = canvas.getContext('2d');
+  
+  // Transparent background by default; for "dark" variants we want transparent too so user can place anywhere
+  ctx.clearRect(0, 0, targetWidth, targetHeight);
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = 'high';
+  ctx.drawImage(img, 0, 0, targetWidth, targetHeight);
+  
+  URL.revokeObjectURL(svgUrl);
+  
+  canvas.toBlob((blob) => {
+    if (!blob) {
+      showToast('PNG generation failed');
+      return;
+    }
+    const filename = `${basename}-${targetWidth}.png`;
+    triggerDownload(blob, filename);
+    showToast(`Downloaded · ${filename}`);
+  }, 'image/png', 1.0);
+}
+
+// ─── Download Palette as JSON ───
+function downloadPaletteJSON() {
+  const data = {
+    name: 'Nuribi Brand Palette',
+    version: '1.0',
+    issued: '2026',
+    palette: PALETTE
+  };
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  triggerDownload(blob, 'nuribi-palette.json');
+  showToast('Downloaded · nuribi-palette.json');
+}
+
+// ─── Download Palette as CSS variables ───
+function downloadPaletteCSS() {
+  const lines = [
+    '/* ═══════════════════════════════════════════════════════════',
+    '   NURIBI · Brand Palette · CSS Custom Properties',
+    '   Brand Identity Guidebook v1.0 · 2026',
+    '═══════════════════════════════════════════════════════════ */',
+    '',
+    ':root {'
+  ];
+  
+  Object.entries(PALETTE).forEach(([group, colors]) => {
+    lines.push(`  /* ${group.toUpperCase()} */`);
+    colors.forEach(c => {
+      const slug = c.name.toLowerCase().replace(/\s+/g, '-');
+      lines.push(`  --nuribi-${slug}: ${c.hex};  /* ${c.role} */`);
+    });
+    lines.push('');
+  });
+  
+  lines.push('}');
+  
+  const blob = new Blob([lines.join('\n')], { type: 'text/css;charset=utf-8' });
+  triggerDownload(blob, 'nuribi-palette.css');
+  showToast('Downloaded · nuribi-palette.css');
+}
+
+// ─── Download Palette as SVG (visual swatches) ───
+function downloadPaletteSVG() {
+  const allColors = [
+    ...PALETTE.primary,
+    ...PALETTE.secondary,
+    ...PALETTE.neutral,
+    ...PALETTE.semantic
+  ];
+  
+  const swatchW = 280;
+  const swatchH = 200;
+  const cols = 4;
+  const rows = Math.ceil(allColors.length / cols);
+  const padding = 60;
+  const totalW = cols * swatchW + padding * 2;
+  const totalH = rows * swatchH + padding * 2 + 60;
+  
+  let svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${totalW} ${totalH}" width="${totalW}" height="${totalH}">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=JetBrains+Mono:wght@400&display=swap');
+    .title { font-family: 'Fraunces', serif; font-size: 28px; font-weight: 350; font-style: italic; }
+    .name { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 400; }
+    .meta { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; }
+  </style>
+  <rect width="${totalW}" height="${totalH}" fill="#FAF4EB"/>
+  <text x="${padding}" y="${padding - 10}" class="title" fill="#2A1810">Nuribi · Brand Palette</text>`;
+  
+  allColors.forEach((c, i) => {
+    const col = i % cols;
+    const row = Math.floor(i / cols);
+    const x = padding + col * swatchW;
+    const y = padding + 40 + row * swatchH;
+    svg += `
+  <g transform="translate(${x}, ${y})">
+    <rect width="${swatchW - 16}" height="${swatchH - 60}" fill="${c.hex}"/>
+    <text x="0" y="${swatchH - 36}" class="name" fill="#2A1810">${c.name}</text>
+    <text x="0" y="${swatchH - 18}" class="meta" fill="#8B7E6E">${c.hex}  ·  RGB ${c.rgb}</text>
+  </g>`;
+  });
+  
+  svg += '\n</svg>';
+  
+  const blob = new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
+  triggerDownload(blob, 'nuribi-palette-swatches.svg');
+  showToast('Downloaded · nuribi-palette-swatches.svg');
+}
+
+// ─── Download Brand Spec Sheet (Markdown) ───
+function downloadSpecSheet() {
+  const md = `# NURIBI · Brand Identity Spec Sheet
+
+**Version**: 1.0  
+**Issued**: 2026, Seoul  
+**Document Status**: Internal — for design, marketing, and partnership use
+
+---
+
+## 1. Brand Essence
+
+- **Name**: Nuribi (누리비)
+- **Etymology**: 누리 (world, ancient Korean) + 비 (light)
+- **Japanese phonetic bonus**: ヌリビ ≈ 塗り美 ("bringing beauty")
+- **Concept**: The light that meets you in Korea
+- **Category**: K-Medical reservation platform for foreign patients
+- **Primary markets**: Japan · Taiwan · USA (Phase 1) · China (Phase 2)
+
+## 2. Brand Promise
+
+1. **Patient at the Center** — every decision starts with the patient's anxiety
+2. **Transparent Journey** — pricing, fees, timelines all known upfront
+3. **Quiet Infrastructure** — the best operations are invisible
+4. **The Light of Korea** — distilling Korean medical excellence into one experience
+
+## 3. Color Palette
+
+### Primary
+${PALETTE.primary.map(c => `- **${c.name}** \`${c.hex}\` — ${c.role}`).join('\n')}
+
+### Secondary
+${PALETTE.secondary.map(c => `- **${c.name}** \`${c.hex}\` — ${c.role}`).join('\n')}
+
+### Neutral
+${PALETTE.neutral.map(c => `- **${c.name}** \`${c.hex}\` — ${c.role}`).join('\n')}
+
+## 4. Typography
+
+| Use | Family | Weights | Source |
+|-----|--------|---------|--------|
+| Display Latin | Fraunces | 200-700, italic | Google Fonts (OFL) |
+| Display Korean | Gowun Batang | 400, 700 | Google Fonts (OFL) |
+| Body Latin | Manrope | 300-700 | Google Fonts (OFL) |
+| Body Korean | Noto Serif KR | 200-900 | Google Fonts (OFL) |
+| Mono | JetBrains Mono | 300-500 | Google Fonts (OFL) |
+
+## 5. Logo System
+
+- **Primary Wordmark**: "NURIBI" all caps in Fraunces (opsz 144, weight 250, SOFT 0), letter-spacing 0.28em
+- **Stacked Variant**: Wordmark + thin Aurum rule + descriptor "SEOUL · K-MEDICAL" in JetBrains Mono caps
+- **Monogram**: Single letter "N" in Fraunces (same axis settings) for app icons, social, tight spaces
+- **Korean Wordmark**: 누리비 in Gowun Batang Bold, letter-spacing 0.22em
+- **Clear space**: minimum X (cap height of wordmark) on all sides
+- **Minimum size**: 80px (full wordmark) / 24px (monogram) digital
+- **Reference aesthetic**: Aesop · Byredo · Augustinus Bader — pure typographic restraint, no symbol mark
+
+## 6. Multilingual Treatments
+
+| Language | Display | Notes |
+|----------|---------|-------|
+| Korean | 누리비 | Master KR form |
+| English | Nuribi | International master |
+| Japanese | ヌリビ | Aligns phonetically with 塗り美 |
+| Chinese | 努里碧 | Phase 2 — verify with hanzi consultant |
+
+## 7. Master Tagline
+
+- **Korean**: 한국에서 만나는 빛.
+- **English**: The light that meets you in Korea.
+
+## 8. Brand Voice Principles
+
+1. **Precise yet warm** — facts cold, expression safe
+2. **Trustworthy yet modern** — numbers and process over superlatives
+3. **Quiet yet friendly** — short sentences, clear subjects, no emoji in B2B
+
+---
+
+*This document accompanies the Nuribi Brand Identity Guidebook v1.0. For asset downloads (SVG/PNG/palette files), refer to the interactive guidebook.*
+`;
+  
+  const blob = new Blob([md], { type: 'text/markdown;charset=utf-8' });
+  triggerDownload(blob, 'nuribi-brand-spec.md');
+  showToast('Downloaded · nuribi-brand-spec.md');
+}
+
+// ─── Trigger browser download ───
+function triggerDownload(blob, filename) {
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  a.style.display = 'none';
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => {
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }, 100);
+}
+
+// ─── Preload web fonts on page load to ensure PNG renders correctly ───
+window.addEventListener('load', () => {
+  if (document.fonts) {
+    Promise.all([
+      document.fonts.load('400 italic 130px Fraunces'),
+      document.fonts.load('300 130px Fraunces'),
+      document.fonts.load('700 100px "Gowun Batang"'),
+      document.fonts.load('400 16px Manrope')
+    ]).then(() => {
+      // Fonts ready
+    });
+  }
+});
+
+// ─── Copy code block content to clipboard ───
+function copyCodeBlock(elementId) {
+  const el = document.getElementById(elementId);
+  if (!el) return;
+  // Decode HTML entities
+  const tmp = document.createElement('textarea');
+  tmp.innerHTML = el.innerHTML;
+  const text = tmp.value;
+  navigator.clipboard.writeText(text).then(() => {
+    showToast('Code copied to clipboard');
+  }).catch(() => {
+    showToast('Copy failed — please select manually');
+  });
+}
+
+// ─── Scroll-spy: highlight active nav item based on viewport ───
+(function() {
+  const navLinks = document.querySelectorAll('.page-nav a[href^="#"]');
+  const sectionMap = new Map();
+  navLinks.forEach(link => {
+    const id = link.getAttribute('href').slice(1);
+    const section = document.getElementById(id);
+    if (section) sectionMap.set(section, link);
+  });
+  if (sectionMap.size === 0) return;
+  
+  let lastActiveLink = null;
+  const observer = new IntersectionObserver((entries) => {
+    // Find the entry with the largest intersection ratio that's intersecting
+    let bestEntry = null;
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        if (!bestEntry || entry.intersectionRatio > bestEntry.intersectionRatio) {
+          bestEntry = entry;
+        }
+      }
+    });
+    if (bestEntry) {
+      const link = sectionMap.get(bestEntry.target);
+      // Only update DOM if active link actually changed (avoid redundant work on every callback)
+      if (link && link !== lastActiveLink) {
+        if (lastActiveLink) lastActiveLink.classList.remove('active');
+        link.classList.add('active');
+        lastActiveLink = link;
+      }
+    }
+  }, {
+    rootMargin: '-30% 0px -60% 0px',
+    threshold: 0
+  });
+  
+  sectionMap.forEach((link, section) => observer.observe(section));
+  
+  // Smooth scroll on click — passive-friendly version
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const id = link.getAttribute('href').slice(1);
+      const target = document.getElementById(id);
+      if (target) {
+        const offset = 100;
+        const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
